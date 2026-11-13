@@ -1,26 +1,26 @@
-🇬🇧 [English version](README.en.md)
+🇵🇱 [Wersja polska](README.pl.md)
 
 # nauka-ai
 
-Mój dziennik nauki software developmentu z pomocą AI.
+My learning journal for software development with the help of AI.
 
-## O mnie i o celu
+## About me and my goal
 
-Mam **10 lat doświadczenia na stanowiskach leadowych w designie w firmach fintechowych**.
-Teraz przygotowuję się do roli **Head of Design**.
+I have **10 years of experience in design lead roles at fintech companies**.
+I am now preparing for a **Head of Design** role.
 
-Chcę lepiej rozumieć, jak powstaje oprogramowanie: jak pracują inżynierowie,
-jakich narzędzi używają i jak AI zmienia ten proces. Dzięki temu będę lepiej
-współpracować z zespołami produktowymi i technicznymi.
+I want to understand more deeply how software gets built: how engineers work,
+which tools they use, and how AI is changing that process. This helps me
+collaborate better with product and engineering teams.
 
-## Czego się tu uczę
+## What I'm learning here
 
-- Pracy z Gitem i GitHubem (commity, gałęzie, remote, push)
-- Pracy w terminalu
-- Programowania wspólnie z asystentem AI (Claude Code)
-- Myślenia o produkcie z perspektywy zarówno designu, jak i inżynierii
+- Working with Git and GitHub (commits, branches, remotes, push)
+- Working in the terminal
+- Programming together with an AI assistant (Claude Code)
+- Thinking about products from both a design and an engineering perspective
 
-## Jak korzystam z tego repozytorium
+## How I use this repository
 
-Każdy krok nauki zapisuję jako commit, więc historia zmian
-jest jednocześnie zapisem mojej drogi.
+I record every learning step as a commit, so the change history
+is also a record of my journey.
