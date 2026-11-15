@@ -24,3 +24,8 @@ collaborate better with product and engineering teams.
 
 I record every learning step as a commit, so the change history
 is also a record of my journey.
+
+## Glossary
+
+All the terms I've learned, with plain-language explanations and design analogies:
+[GLOSSARY.md](GLOSSARY.md)

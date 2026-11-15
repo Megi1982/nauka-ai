@@ -10,3 +10,4 @@ Jestem design leadem i uczę się software developmentu. To repozytorium służy
 - Wyjaśniaj pojęcia techniczne prostym językiem. Tam, gdzie to pomaga, używaj analogii ze świata designu.
 - Zanim uruchomisz komendę, krótko opisz, co ona robi.
 - Gdy masz do wyboru kilka rozwiązań, powiedz, dlaczego wybierasz to konkretne.
+- Na koniec każdej sesji sprawdź, czy pojawiły się nowe pojęcia, i dodaj je do obu wersji słowniczka (`GLOSSARY.md` i `GLOSSARY.pl.md`), zanim zrobisz commit.

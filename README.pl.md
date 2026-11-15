@@ -24,3 +24,8 @@ współpracować z zespołami produktowymi i technicznymi.
 
 Każdy krok nauki zapisuję jako commit, więc historia zmian
 jest jednocześnie zapisem mojej drogi.
+
+## Słowniczek
+
+Wszystkie pojęcia, które poznałam, z wyjaśnieniami prostym językiem i analogiami z designu:
+[GLOSSARY.pl.md](GLOSSARY.pl.md)
