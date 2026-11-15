@@ -49,6 +49,11 @@ Aplikacja, w której pracujesz z komputerem za pomocą poleceń tekstowych zamia
 
 ## Git
 
+### .gitignore
+Plik z listą plików i folderów, które Git ma pomijać: nie śledzi ich i nie proponuje dodania ich do commita. Przydaje się dla prywatnych ustawień, haseł i plików tymczasowych.
+- **Analogia z designu:** Jak ukrycie warstw pomocniczych przed eksportem: są w Twoim pliku, ale nie trafiają do oddawanych materiałów.
+- **Przykład:** Linia `.claude/settings.local.json` w pliku `.gitignore`
+
 ### Branch
 Gałąź, czyli osobna linia pracy w repozytorium. Na gałęzi możesz eksperymentować bez ruszania głównej wersji.
 - **Analogia z designu:** Dokładnie jak branching w Figmie: pracujesz na kopii, a potem łączysz ją z głównym plikiem.
@@ -129,6 +134,11 @@ Repozytorium, czyli folder projektu śledzony przez Gita, razem z pełną histor
 - **Analogia z designu:** Projekt w Figmie ze wszystkimi plikami i ich historią.
 - **Przykład:** `git init` (zamień bieżący folder w repozytorium)
 
+### Untracked file
+Nieśledzony plik, czyli plik w folderze repozytorium, którego Git jeszcze nie śledzi, bo nigdy nie został dodany do commita. `git status --short` oznacza go symbolem `??`.
+- **Analogia z designu:** Nowy frame na canvasie, który nie należy jeszcze do żadnej opublikowanej wersji.
+- **Przykład:** `git status --short` → `?? GLOSSARY.md`
+
 ---
 
 ## GitHub
@@ -199,3 +209,8 @@ Tryby uprawnień, które decydują, ile Claude może zrobić bez pytania mnie o 
 - **auto:** działa samodzielnie, z zabezpieczeniami, i zatrzymuje się przed ryzykownymi działaniami.
 - **Analogia z designu:** Poziomy samodzielności członka zespołu: od zatwierdzania każdej decyzji po pełne delegowanie zadania.
 - **Przykład:** Naciśnij Shift + Tab w Claude Code, żeby przełączyć tryb.
+
+### settings.local.json
+Plik ustawień Claude Code w folderze `.claude/` z moimi osobistymi, lokalnymi ustawieniami dla tego projektu, np. jakie polecenia Claude może uruchamiać bez pytania. Nie jest udostępniany, dlatego jest wpisany do `.gitignore`.
+- **Analogia z designu:** Twoje osobiste preferencje aplikacji (np. poziom zoomu albo krok przesuwania strzałkami): wpływają na Twoją pracę, ale nie są częścią wspólnego pliku.
+- **Przykład:** `.claude/settings.local.json`

@@ -49,6 +49,11 @@ An app where you work with your computer through text commands instead of clicki
 
 ## Git
 
+### .gitignore
+A file listing files and folders that Git should ignore: it won't track them or suggest adding them to a commit. Useful for private settings, passwords and temporary files.
+- **Design analogy:** Like hiding helper layers before exporting: they're in your file, but they don't end up in the deliverable.
+- **Example:** A line `.claude/settings.local.json` in the `.gitignore` file
+
 ### Branch
 A separate line of work within a repository. You can experiment on a branch without touching the main version.
 - **Design analogy:** Exactly like branching in Figma: you work on a copy, then merge it back.
@@ -129,6 +134,11 @@ A project folder tracked by Git, together with its full change history (stored i
 - **Design analogy:** A Figma project with all its files and their history.
 - **Example:** `git init` (turn the current folder into a repository)
 
+### Untracked file
+A file in the repository folder that Git doesn't track yet: it has never been added to a commit. `git status --short` marks it with `??`.
+- **Design analogy:** A new frame on the canvas that isn't part of any published version yet.
+- **Example:** `git status --short` → `?? GLOSSARY.md`
+
 ---
 
 ## GitHub
@@ -199,3 +209,8 @@ Settings that decide how much Claude can do without asking for my approval:
 - **auto:** acts independently, with safety checks, and stops before risky actions.
 - **Design analogy:** Levels of autonomy for a team member, from approving every decision to fully delegating a task.
 - **Example:** Press Shift + Tab in Claude Code to switch modes.
+
+### settings.local.json
+A Claude Code settings file in the `.claude/` folder that stores my personal, local settings for this project, e.g. which commands Claude may run without asking. It isn't shared, so it's listed in `.gitignore`.
+- **Design analogy:** Your personal app preferences (like zoom level or nudge amount): they affect how you work, but they aren't part of the shared file.
+- **Example:** `.claude/settings.local.json`
