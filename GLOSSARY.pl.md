@@ -212,13 +212,18 @@ Linia na końcu opisu commita, która oznacza współautora. GitHub pokazuje prz
 - **Przykład:** `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`
 
 ### Permission modes
-Tryby uprawnień, które decydują, ile Claude może zrobić bez pytania mnie o zgodę:
-- **manual:** pyta przed każdą edycją pliku i każdym poleceniem.
-- **accept edits:** edytuje pliki bez pytania, ale przed uruchomieniem poleceń wciąż pyta.
-- **plan:** tylko czyta i przygotowuje plan, niczego nie zmienia, dopóki go nie zatwierdzę.
-- **auto:** działa samodzielnie, z zabezpieczeniami, i zatrzymuje się przed ryzykownymi działaniami.
+Tryby uprawnień, które decydują, ile Claude może zrobić bez pytania mnie o zgodę. Przełączam je skrótem **Shift + Tab**; aktualny tryb widać na dole ekranu.
+- **manual:** pyta przed każdą edycją pliku i każdym poleceniem. *Kiedy używać:* gdy uczę się czegoś nowego i chcę widzieć i rozumieć każdy krok.
+- **accept edits:** edytuje pliki bez pytania, ale przed uruchomieniem poleceń wciąż pyta. *Kiedy używać:* gdy ufam kierunkowi i nie chcę zatwierdzać każdej drobnej zmiany w plikach, ale chcę zachować kontrolę nad poleceniami.
+- **plan:** tylko czyta i przygotowuje plan, niczego nie zmienia, dopóki go nie zatwierdzę. *Kiedy używać:* przy większych zadaniach z wieloma plikami i decyzjami (zob. [Plan mode](#plan-mode)).
+- **auto:** działa samodzielnie, z zabezpieczeniami, i zatrzymuje się przed ryzykownymi działaniami. *Kiedy używać:* przy dobrze określonych, powtarzalnych zadaniach, gdy wiem już, jak ma wyglądać efekt.
 - **Analogia z designu:** Poziomy samodzielności członka zespołu: od zatwierdzania każdej decyzji po pełne delegowanie zadania.
-- **Przykład:** Naciśnij Shift + Tab w Claude Code, żeby przełączyć tryb.
+- **Przykład:** Shift + Tab → manual → accept edits → plan → …
+
+### Plan mode
+Tryb uprawnień, w którym Claude najpierw tylko czyta pliki i przygotowuje plan. Mogę go zatwierdzić albo poprawić („Tell Claude what to change”), a zmiany zaczynają się dopiero po moim zatwierdzeniu. Warto go używać przy większych zadaniach z wieloma plikami i decyzjami, a nie przy drobnych poprawkach.
+- **Analogia z designu:** Kickoff z zespołem: najpierw wspólnie uzgadniamy podejście, a dopiero potem ktoś zaczyna pracę.
+- **Przykład:** Naciskaj Shift + Tab, aż zobaczysz „plan mode”, a potem opisz zadanie.
 
 ### settings.local.json
 Plik ustawień Claude Code w folderze `.claude/` z moimi osobistymi, lokalnymi ustawieniami dla tego projektu, np. jakie polecenia Claude może uruchamiać bez pytania. Nie jest udostępniany, dlatego jest wpisany do `.gitignore`.

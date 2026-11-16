@@ -212,13 +212,18 @@ A line at the end of a commit message that marks a co-author. GitHub shows all c
 - **Example:** `Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>`
 
 ### Permission modes
-Settings that decide how much Claude can do without asking for my approval:
-- **manual:** asks before every file edit and command.
-- **accept edits:** edits files without asking, but still asks before running commands.
-- **plan:** only reads and prepares a plan; changes nothing until I approve it.
-- **auto:** acts independently, with safety checks, and stops before risky actions.
+Settings that decide how much Claude can do without asking for my approval. I switch between them with the **Shift + Tab** shortcut; the current mode is shown at the bottom of the screen.
+- **manual:** asks before every file edit and command. *When to use:* when I'm learning something new and want to see and understand every step.
+- **accept edits:** edits files without asking, but still asks before running commands. *When to use:* when I trust the direction and don't want to approve every small file change, but still want control over commands.
+- **plan:** only reads and prepares a plan; changes nothing until I approve it. *When to use:* for bigger tasks with many files and decisions (see [Plan mode](#plan-mode)).
+- **auto:** acts independently, with safety checks, and stops before risky actions. *When to use:* for well-defined, repeatable tasks where I already know what the result should look like.
 - **Design analogy:** Levels of autonomy for a team member, from approving every decision to fully delegating a task.
-- **Example:** Press Shift + Tab in Claude Code to switch modes.
+- **Example:** Shift + Tab → manual → accept edits → plan → …
+
+### Plan mode
+A permission mode in which Claude first only reads files and prepares a plan. I can approve the plan or correct it ("Tell Claude what to change"), and Claude only starts making changes after I approve it. Worth using for bigger tasks with many files and decisions, not for small fixes.
+- **Design analogy:** A kickoff with the team: first we agree on the approach together, and only then does someone start the work.
+- **Example:** Press Shift + Tab until you see "plan mode", then describe the task.
 
 ### settings.local.json
 A Claude Code settings file in the `.claude/` folder that stores my personal, local settings for this project, e.g. which commands Claude may run without asking. It isn't shared, so it's listed in `.gitignore`.
