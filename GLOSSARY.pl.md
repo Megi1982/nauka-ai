@@ -172,6 +172,11 @@ Para plików do bezpiecznego logowania bez hasła. **Klucz publiczny** przekazuj
 
 ## Dokumentacja
 
+### Frontmatter
+Blok ustawień na samej górze pliku Markdown, między dwiema liniami `---`. Programy czytają go jako konfigurację; nie jest wyświetlany jako część tekstu.
+- **Analogia z designu:** Jak właściwości warstwy w Figmie: niewidoczne na canvasie, ale decydują, jak element się zachowuje.
+- **Przykład:** `---` / `name: dziennik` / `---` na górze pliku `SKILL.md`
+
 ### Markdown
 Prosty sposób formatowania tekstu za pomocą znaków: `#` to nagłówek, `-` to punkt listy, a `**tekst**` to pogrubienie.
 - **Analogia z designu:** Jak style tekstu, tylko nadawane wpisanymi znakami zamiast wyboru z menu.
@@ -185,6 +190,11 @@ Prosty sposób formatowania tekstu za pomocą znaków: `#` to nagłówek, `-` to
 ---
 
 ## Claude Code
+
+### allowed-tools
+Ustawienie we frontmatterze skilla, które wymienia polecenia, jakie Claude może uruchamiać bez pytania mnie o zgodę, dopóki działa ten skill. Wszystko spoza listy wciąż wymaga mojej zgody. Dlatego w `/dziennik` celowo nie ma tam `git push`.
+- **Analogia z designu:** Jak dostęp „can edit” vs. „can view”: dajesz dokładnie te uprawnienia, których zadanie potrzebuje, a publikację zostawiasz sobie.
+- **Przykład:** `allowed-tools: Bash(git add:*), Bash(git commit:*)`
 
 ### Claude memory
 Notatki, które Claude zapisuje między sesjami: fakty o mnie i moje preferencje (np. „zawsze twórz wersję angielską”). Są przechowywane w plikach na moim komputerze, poza repozytorium.
@@ -214,3 +224,8 @@ Tryby uprawnień, które decydują, ile Claude może zrobić bez pytania mnie o 
 Plik ustawień Claude Code w folderze `.claude/` z moimi osobistymi, lokalnymi ustawieniami dla tego projektu, np. jakie polecenia Claude może uruchamiać bez pytania. Nie jest udostępniany, dlatego jest wpisany do `.gitignore`.
 - **Analogia z designu:** Twoje osobiste preferencje aplikacji (np. poziom zoomu albo krok przesuwania strzałkami): wpływają na Twoją pracę, ale nie są częścią wspólnego pliku.
 - **Przykład:** `.claude/settings.local.json`
+
+### Skill (slash command)
+Plik Markdown z instrukcjami krok po kroku, które Claude wykonuje, gdy wpiszę `/nazwa`. To nie program, tylko spisana procedura. Skille dla jednego projektu leżą w `.claude/skills/<nazwa>/SKILL.md` i są zapisywane w Gicie jak każdy inny plik.
+- **Analogia z designu:** Jak master component w Figmie: raz projektujesz przepis, potem wstawiasz go jednym ruchem i zawsze działa tak samo.
+- **Przykład:** `/dziennik` uruchamia `.claude/skills/dziennik/SKILL.md`

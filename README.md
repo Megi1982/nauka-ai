@@ -25,6 +25,12 @@ collaborate better with product and engineering teams.
 I record every learning step as a commit, so the change history
 is also a record of my journey.
 
+## Learning journal
+
+A short daily reflection: what I learned, what was difficult, and my question for tomorrow.
+I add entries with a custom Claude Code command, `/dziennik` ("journal" in Polish):
+[JOURNAL.md](JOURNAL.md)
+
 ## Glossary
 
 All the terms I've learned, with plain-language explanations and design analogies:

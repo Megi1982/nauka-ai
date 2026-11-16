@@ -25,6 +25,12 @@ współpracować z zespołami produktowymi i technicznymi.
 Każdy krok nauki zapisuję jako commit, więc historia zmian
 jest jednocześnie zapisem mojej drogi.
 
+## Dziennik nauki
+
+Krótka, codzienna refleksja: czego się nauczyłam, co było trudne i moje pytanie na jutro.
+Wpisy dodaję własną komendą Claude Code, `/dziennik`:
+[JOURNAL.pl.md](JOURNAL.pl.md)
+
 ## Słowniczek
 
 Wszystkie pojęcia, które poznałam, z wyjaśnieniami prostym językiem i analogiami z designu:

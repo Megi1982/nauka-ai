@@ -172,6 +172,11 @@ A pair of files used to log in securely without a password. The **public key** i
 
 ## Documentation
 
+### Frontmatter
+A block of settings at the very top of a Markdown file, between two `---` lines. Programs read it as configuration; it isn't shown as part of the text.
+- **Design analogy:** Like layer properties in Figma: invisible on the canvas, but they decide how the element behaves.
+- **Example:** `---` / `name: dziennik` / `---` at the top of `SKILL.md`
+
 ### Markdown
 A simple way to format text using characters: `#` for headings, `-` for list items, `**text**` for bold.
 - **Design analogy:** Like text styles, but applied by typing symbols instead of choosing from a menu.
@@ -185,6 +190,11 @@ The "front page" of a repository. GitHub automatically displays the `README.md` 
 ---
 
 ## Claude Code
+
+### allowed-tools
+A setting in a skill's frontmatter that lists the commands Claude may run without asking me while that skill is running. Anything not on the list still needs my approval, which is why `git push` is deliberately left out of `/dziennik`.
+- **Design analogy:** Like editor vs. viewer access: you grant exactly the rights a task needs, and keep publishing for yourself.
+- **Example:** `allowed-tools: Bash(git add:*), Bash(git commit:*)`
 
 ### Claude memory
 Notes Claude saves between sessions: facts about me and my preferences (e.g. "always create an English version"). They're stored in files on my computer, outside the repository.
@@ -214,3 +224,8 @@ Settings that decide how much Claude can do without asking for my approval:
 A Claude Code settings file in the `.claude/` folder that stores my personal, local settings for this project, e.g. which commands Claude may run without asking. It isn't shared, so it's listed in `.gitignore`.
 - **Design analogy:** Your personal app preferences (like zoom level or nudge amount): they affect how you work, but they aren't part of the shared file.
 - **Example:** `.claude/settings.local.json`
+
+### Skill (slash command)
+A Markdown file with step-by-step instructions that Claude follows when I type `/name`. It isn't a program, just a written-down procedure. Skills for one project live in `.claude/skills/<name>/SKILL.md` and are saved in Git like any other file.
+- **Design analogy:** Like a master component in Figma: you design the recipe once, then insert it in one move and it always works the same way.
+- **Example:** `/dziennik` runs `.claude/skills/dziennik/SKILL.md`
