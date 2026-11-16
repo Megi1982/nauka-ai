@@ -220,6 +220,11 @@ Settings that decide how much Claude can do without asking for my approval. I sw
 - **Design analogy:** Levels of autonomy for a team member, from approving every decision to fully delegating a task.
 - **Example:** Shift + Tab → manual → accept edits → plan → …
 
+### Permission prompt
+The question Claude shows before it takes an action that isn't pre-approved, e.g. running a command or editing a file. It shows exactly what will happen, and I choose whether to allow it (once or permanently) or refuse. Before approving, it's worth reading the command and Claude's explanation of it.
+- **Design analogy:** Like the "Publish library changes?" dialog in Figma: one last chance to check what's going out before it happens.
+- **Example:** "Do you want to proceed?" → Yes / Yes, and don't ask again / No
+
 ### Plan mode
 A permission mode in which Claude first only reads files and prepares a plan. I can approve the plan or correct it ("Tell Claude what to change"), and Claude only starts making changes after I approve it. Worth using for bigger tasks with many files and decisions, not for small fixes.
 - **Design analogy:** A kickoff with the team: first we agree on the approach together, and only then does someone start the work.
@@ -234,3 +239,12 @@ A Claude Code settings file in the `.claude/` folder that stores my personal, lo
 A Markdown file with step-by-step instructions that Claude follows when I type `/name`. It isn't a program, just a written-down procedure. Skills for one project live in `.claude/skills/<name>/SKILL.md` and are saved in Git like any other file.
 - **Design analogy:** Like a master component in Figma: you design the recipe once, then insert it in one move and it always works the same way.
 - **Example:** `/dziennik` runs `.claude/skills/dziennik/SKILL.md`
+
+### Tools (Bash, Read, Edit, Write)
+The "hands" Claude uses to act. Each step on screen is labeled with the tool's name and what it's applied to:
+- **Bash:** runs a command in the terminal (e.g. `git status`, `date`).
+- **Read:** opens a file and reads its contents; changes nothing.
+- **Edit:** changes a fragment of an existing file (replaces old text with new).
+- **Write:** creates a new file or overwrites a whole file.
+- **Design analogy:** Like the tools in Figma's toolbar (Move, Frame, Text, Pen): the label tells you what kind of action is happening before you look at the details.
+- **Example:** `Bash(date +%F)` (check today's date) / `Read(JOURNAL.md)` (open the journal)

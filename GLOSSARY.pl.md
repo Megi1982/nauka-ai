@@ -220,6 +220,11 @@ Tryby uprawnień, które decydują, ile Claude może zrobić bez pytania mnie o 
 - **Analogia z designu:** Poziomy samodzielności członka zespołu: od zatwierdzania każdej decyzji po pełne delegowanie zadania.
 - **Przykład:** Shift + Tab → manual → accept edits → plan → …
 
+### Permission prompt
+Prośba o zgodę, którą Claude wyświetla przed działaniem, które nie zostało wcześniej dozwolone, np. przed uruchomieniem polecenia albo edycją pliku. Pokazuje dokładnie, co się stanie, a ja wybieram, czy się zgadzam (jednorazowo albo na stałe), czy odmawiam. Przed zatwierdzeniem warto przeczytać polecenie i wyjaśnienie Claude'a.
+- **Analogia z designu:** Jak okno „Publish library changes?” w Figmie: ostatnia chwila, żeby sprawdzić, co wychodzi, zanim to się stanie.
+- **Przykład:** „Do you want to proceed?” → Yes / Yes, and don't ask again / No
+
 ### Plan mode
 Tryb uprawnień, w którym Claude najpierw tylko czyta pliki i przygotowuje plan. Mogę go zatwierdzić albo poprawić („Tell Claude what to change”), a zmiany zaczynają się dopiero po moim zatwierdzeniu. Warto go używać przy większych zadaniach z wieloma plikami i decyzjami, a nie przy drobnych poprawkach.
 - **Analogia z designu:** Kickoff z zespołem: najpierw wspólnie uzgadniamy podejście, a dopiero potem ktoś zaczyna pracę.
@@ -234,3 +239,12 @@ Plik ustawień Claude Code w folderze `.claude/` z moimi osobistymi, lokalnymi u
 Plik Markdown z instrukcjami krok po kroku, które Claude wykonuje, gdy wpiszę `/nazwa`. To nie program, tylko spisana procedura. Skille dla jednego projektu leżą w `.claude/skills/<nazwa>/SKILL.md` i są zapisywane w Gicie jak każdy inny plik.
 - **Analogia z designu:** Jak master component w Figmie: raz projektujesz przepis, potem wstawiasz go jednym ruchem i zawsze działa tak samo.
 - **Przykład:** `/dziennik` uruchamia `.claude/skills/dziennik/SKILL.md`
+
+### Tools (Bash, Read, Edit, Write)
+Narzędzia, czyli „ręce”, którymi Claude działa. Każdy krok na ekranie jest podpisany nazwą narzędzia i tym, na czym działa:
+- **Bash:** uruchamia polecenie w terminalu (np. `git status`, `date`).
+- **Read:** otwiera plik i czyta jego zawartość; niczego nie zmienia.
+- **Edit:** zmienia fragment istniejącego pliku (zamienia stary tekst na nowy).
+- **Write:** tworzy nowy plik albo nadpisuje cały plik.
+- **Analogia z designu:** Jak narzędzia na pasku w Figmie (Move, Frame, Text, Pen): etykieta mówi, jaki rodzaj działania się dzieje, zanim spojrzysz na szczegóły.
+- **Przykład:** `Bash(date +%F)` (sprawdź dzisiejszą datę) / `Read(JOURNAL.md)` (otwórz dziennik)
