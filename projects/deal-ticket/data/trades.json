@@ -1,0 +1,18 @@
+[
+  { "id": "T-001", "date": "2026-10-01", "symbol": "EURUSD", "side": "buy",  "size": 1.0, "stopLossPips": 20, "takeProfitPips": 40 },
+  { "id": "T-002", "date": "2026-10-03", "symbol": "EURUSD", "side": "buy",  "size": 1.0, "stopLossPips": 25, "takeProfitPips": 50 },
+  { "id": "T-003", "date": "2026-10-06", "symbol": "EURUSD", "side": "sell", "size": 0.5, "stopLossPips": 15, "takeProfitPips": 30 },
+  { "id": "T-004", "date": "2026-10-09", "symbol": "EURUSD", "side": "buy",  "size": 2.0, "stopLossPips": 20, "takeProfitPips": 45 },
+  { "id": "T-005", "date": "2026-10-14", "symbol": "EURUSD", "side": "buy",  "size": 1.0, "stopLossPips": 30, "takeProfitPips": 40 },
+  { "id": "T-006", "date": "2026-10-02", "symbol": "GBPUSD", "side": "sell", "size": 0.5, "stopLossPips": 30, "takeProfitPips": 60 },
+  { "id": "T-007", "date": "2026-10-08", "symbol": "GBPUSD", "side": "sell", "size": 0.8, "stopLossPips": 35, "takeProfitPips": 70 },
+  { "id": "T-008", "date": "2026-10-15", "symbol": "GBPUSD", "side": "buy",  "size": 0.5, "stopLossPips": 25, "takeProfitPips": 50 },
+  { "id": "T-009", "date": "2026-10-21", "symbol": "GBPUSD", "side": "sell", "size": 0.5, "stopLossPips": 30, "takeProfitPips": 55 },
+  { "id": "T-010", "date": "2026-10-04", "symbol": "XAUUSD", "side": "buy",  "size": 0.2, "stopLossPips": 150, "takeProfitPips": 300 },
+  { "id": "T-011", "date": "2026-10-11", "symbol": "XAUUSD", "side": "buy",  "size": 0.3, "stopLossPips": 200, "takeProfitPips": 400 },
+  { "id": "T-012", "date": "2026-10-18", "symbol": "XAUUSD", "side": "sell", "size": 0.2, "stopLossPips": 120, "takeProfitPips": 250 },
+  { "id": "T-013", "date": "2026-10-25", "symbol": "XAUUSD", "side": "buy",  "size": 0.2, "stopLossPips": 180, "takeProfitPips": 350 },
+  { "id": "T-014", "date": "2026-10-29", "symbol": "XAUUSD", "side": "buy",  "size": 1.5, "stopLossPips": 160, "takeProfitPips": 320 },
+  { "id": "T-015", "date": "2026-11-02", "symbol": "EURUSD", "side": "sell", "size": 1.0, "stopLossPips": 20, "takeProfitPips": 35 },
+  { "id": "T-016", "date": "2026-11-05", "symbol": "GBPUSD", "side": "sell", "size": 3.0, "stopLossPips": 40, "takeProfitPips": 80 }
+]

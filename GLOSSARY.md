@@ -10,6 +10,8 @@ Terms are grouped by category and sorted alphabetically within each one.
 - [GitHub](#github)
 - [Documentation](#documentation)
 - [Claude Code](#claude-code)
+- [Web development](#web-development)
+- [Trading](#trading)
 
 ---
 
@@ -24,6 +26,11 @@ An instruction you type into the terminal and confirm with Enter. It usually con
 Apple's package of developer tools for macOS. Among other things, it includes `git`. Without it, many terminal commands won't work.
 - **Design analogy:** Like installing a font package before you can use those typefaces in your designs.
 - **Example:** `xcode-select --install`
+
+### curl
+A terminal program that sends HTTP requests and prints the response. Useful for testing an API without opening a browser.
+- **Design analogy:** Like testing a single component in isolation before placing it on a screen.
+- **Example:** `curl localhost:3000/api/instruments`
 
 ### Home directory (~)
 Your personal folder on the computer (`/Users/<your-name>`). The `~` sign is its shortcut.
@@ -248,3 +255,141 @@ The "hands" Claude uses to act. Each step on screen is labeled with the tool's n
 - **Write:** creates a new file or overwrites a whole file.
 - **Design analogy:** Like the tools in Figma's toolbar (Move, Frame, Text, Pen): the label tells you what kind of action is happening before you look at the details.
 - **Example:** `Bash(date +%F)` (check today's date) / `Read(JOURNAL.md)` (open the journal)
+
+---
+
+## Web development
+
+### API
+The agreed set of "windows" through which the frontend can ask the backend for something: which addresses exist, what to send and what comes back. The frontend doesn't need to know how the backend works inside.
+- **Design analogy:** A restaurant menu: it lists what you can order, without showing how the kitchen makes it.
+- **Example:** `GET /api/trade-default/EURUSD` in the deal ticket demo
+
+### Backend
+The part of the application that runs on the server: business logic, calculations, validation and access to data. The user never sees it directly.
+- **Design analogy:** The kitchen in a restaurant: guests only see the dish.
+- **Example:** `projects/deal-ticket/backend/tradeDefault.js` (calculates the Trade default)
+
+### Database
+The place where an application stores data permanently. Usually a dedicated program (e.g. PostgreSQL); in the demo it's just JSON files.
+- **Design analogy:** The pantry: ingredients are stored there and the kitchen fetches them when needed.
+- **Example:** `projects/deal-ticket/data/trades.json`
+
+### Dependency
+Someone else's ready-made code that your project uses, e.g. a library. Listed in `package.json` and downloaded with `npm install`.
+- **Design analogy:** A component library you link to your file instead of drawing every button yourself.
+- **Example:** `express` in the deal ticket demo (its only dependency)
+
+### Endpoint
+One specific address in an API, together with its HTTP method, e.g. `GET /api/instruments`. Each endpoint does one job.
+- **Design analogy:** One item on the menu.
+- **Example:** `app.get('/api/instruments', ...)` in `server.js`
+
+### Express
+A popular, small Node.js library for building servers and APIs. It lets you say in one line: "when someone asks for this address, do this".
+- **Design analogy:** A ready-made screen template: you only fill in what's specific to your project.
+- **Example:** `const app = express();`
+
+### fetch
+A built-in browser function that sends an HTTP request to the server and waits for the response. This is how the frontend talks to the API.
+- **Design analogy:** The waiter carrying an order to the kitchen and bringing back the dish.
+- **Example:** `fetch('/api/instruments')`
+
+### Frontend
+The part of the application that runs in the browser and that the user sees and clicks: HTML (structure), CSS (look) and JavaScript (behaviour).
+- **Design analogy:** The screens from your Figma file, but working: wireframe (HTML), visual style (CSS) and prototype interactions (JavaScript).
+- **Example:** `projects/deal-ticket/frontend/index.html`
+
+### HTTP method (GET, POST)
+The type of request sent to the server. **GET** means "give me data" and changes nothing; **POST** means "here is new data, save it".
+- **Design analogy:** The difference between viewing a file (GET) and adding a comment to it (POST).
+- **Example:** `GET /api/instruments` / `POST /api/orders`
+
+### HTTP status code
+A number the server sends back with every response to say how it went: **200** OK, **201** created, **400** bad request (e.g. a validation error), **404** not found.
+- **Design analogy:** Like the states of a component: default, success, error, empty. Each one needs its own design.
+- **Example:** `/api/trade-default/USDJPY` returns `404`, so the drawer shows an empty state.
+
+### JavaScript
+The programming language of web pages: it makes them interactive (reacting to clicks, fetching data, changing content). **Note:** Java is a completely different language. Only the names are similar, for historical marketing reasons.
+- **Design analogy:** What turns a static mockup into a clickable prototype.
+- **Example:** `projects/deal-ticket/frontend/app.js`
+
+### JSON
+A text format for storing and sending data as "key: value" pairs and lists. Readable for both people and programs, and the most common format for API responses.
+- **Design analogy:** Like design tokens exported to a file: structured, named values.
+- **Example:** `{ "symbol": "EURUSD", "side": "buy", "size": 1 }`
+
+### localhost and port
+**localhost** is the address of your own computer. A **port** is the number of a "door" on it where a specific program listens. `localhost:3000` means "the program on my computer that listens on door 3000".
+- **Design analogy:** The building address (localhost) and the office number inside it (port).
+- **Example:** http://localhost:3000
+
+### Median and mode
+Simple statistics used in the demo as a heuristic (a rule of thumb). **Mode** is the most frequent value. **Median** is the middle value after sorting; unlike an average, a single unusual value doesn't skew it.
+- **Design analogy:** In user research, the mode is the answer most people gave, and the median tells you what a typical user does, even if one person is extreme.
+- **Example:** Sizes 0.2, 0.2, 0.2, 0.3, 1.5 → median 0.2 (the 1.5 doesn't change it)
+
+### Node.js
+A program that runs JavaScript outside the browser. It's the same JavaScript engine that runs in the browser (V8 from Chrome), just started directly on the computer. That's why you can write a backend in it, in the same language as the frontend.
+- **Design analogy:** Like being able to use the same design tokens both in Figma and in code: one language, two places.
+- **Example:** `node backend/server.js`
+
+### node_modules
+The folder where `npm install` puts downloaded dependencies. It can be large and anyone can recreate it, so it's listed in `.gitignore` and never committed.
+- **Design analogy:** Like exported assets: you don't keep them in version history when you can regenerate them from the source file.
+- **Example:** `node_modules/` in `.gitignore`
+
+### npm
+The package manager for Node.js: it downloads libraries from the public npm registry and runs project scripts.
+- **Design analogy:** Like the Figma Community plugin library, with a manager that installs exactly the versions you need.
+- **Example:** `npm install` / `npm start`
+
+### package.json and package-lock.json
+**package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
+- **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
+- **Example:** `"start": "node backend/server.js"` in `package.json`
+
+### Server
+A program that waits for requests and answers them. During development it runs on your own computer (localhost); in production it runs on a computer in a data center.
+- **Design analogy:** A receptionist who waits for visitors and directs each one to the right place.
+- **Example:** `npm start` → "Deal Ticket demo running at http://localhost:3000"
+
+### Validation (client and server)
+Checking that data makes sense, e.g. a stop loss below the price for a Buy order. In the **frontend** it gives quick feedback to the user; in the **backend** it protects the data, because anyone can bypass the browser and send a request directly.
+- **Design analogy:** Inline form errors (frontend) vs. final approval before release (backend): the first helps the user, the second guarantees quality.
+- **Example:** `400 {"errors":["Stop loss must be below the entry price"]}`
+
+---
+
+## Trading
+
+### Bid/ask
+Every instrument has two prices. **Bid** is the price at which you can sell; **ask** is the price at which you can buy. Ask is always a little higher than bid. That's why a Buy order opens at the ask and a Sell order opens at the bid.
+- **Design analogy:** Like a currency exchange booth showing two rates: "we buy" and "we sell". You always get the less favourable one.
+- **Example:** `GET /api/instruments` returns `"bid": 1.08493, "ask": 1.08503` for EUR/USD; the Bid and Ask boxes above the Buy/Sell toggle show them live.
+
+### Lot
+The unit of position size. A standard lot in forex is 100,000 units of the base currency (e.g. 100,000 EUR for EUR/USD), so 0.5 lots is half of that. For gold, one lot is usually 100 ounces.
+- **Design analogy:** Like a grid unit (e.g. 8 px): you don't size elements in arbitrary numbers, but in multiples of an agreed base unit.
+- **Example:** The "Size (lots)" field and `"size": 1.0` in `data/trades.json`
+
+### Pip
+The standard unit for small price moves. For most currency pairs it's the 4th decimal place (0.0001); for pairs with the Japanese yen it's the 2nd (0.01). For gold, brokers use different conventions; the demo uses 0.1. Stop loss and take profit distances are usually given in pips, because a number like "20 pips" means the same thing whatever the price.
+- **Design analogy:** Like a nudge step in Figma (1 px or 10 px with Shift): a fixed unit of movement that makes distances easy to compare.
+- **Example:** `"pipSize": 0.0001` for EUR/USD in `data/instruments.json`; `tradeDefault.js` multiplies `stopLossPips × pipSize` to turn pips into a price.
+
+### Spread
+The difference between the ask and the bid price. It's the hidden cost of every trade: when you buy and sell immediately, you lose the spread.
+- **Design analogy:** Like the gap between two adjacent elements: small, but always there, and you have to account for it.
+- **Example:** `"spread": 0.0001` for EUR/USD in `data/instruments.json`, so 1 pip; `server.js` calculates bid and ask as the mid price minus and plus half of the spread.
+
+### Stop loss (SL)
+A price at which a losing position is closed automatically, to limit the loss. For a Buy it's below the entry price; for a Sell it's above.
+- **Design analogy:** Like a time box in a design sprint: you decide upfront when to stop, so you don't sink more into an idea that isn't working.
+- **Example:** The "Stop loss" field; `"stopLossPips": 20` in `data/trades.json`. If it's on the wrong side, the API answers `400 "Stop loss must be below the entry price"`.
+
+### Take profit (TP)
+A price at which a winning position is closed automatically, to lock in the profit. For a Buy it's above the entry price; for a Sell it's below.
+- **Design analogy:** Like a definition of done: you agree upfront when the result is good enough to ship, instead of polishing forever.
+- **Example:** The "Take profit" field; `"takeProfitPips": 40` in `data/trades.json`, which the Trade default turns into a price such as `1.08903`.

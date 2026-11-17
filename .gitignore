@@ -1,2 +1,5 @@
 # Local Claude Code settings (personal permissions, not shared)
 .claude/settings.local.json
+
+# Installed dependencies (recreate with `npm install`)
+node_modules/

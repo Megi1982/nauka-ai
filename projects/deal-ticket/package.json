@@ -1,0 +1,14 @@
+{
+  "name": "deal-ticket-demo",
+  "version": "1.0.0",
+  "description": "Learning demo of a trading deal ticket: frontend, API, backend and a JSON database. Fictional data only.",
+  "private": true,
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js"
+  },
+  "license": "UNLICENSED",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}

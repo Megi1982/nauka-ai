@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Deal Ticket Demo</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- ① FRONTEND: the structure of the screen. Behaviour lives in app.js, looks in styles.css. -->
+  <div class="demo-banner">DEMO · fictional prices · no real money</div>
+
+  <main class="ticket">
+    <h1>Deal ticket</h1>
+
+    <form id="order-form" novalidate>
+      <label class="field">
+        <span>Instrument</span>
+        <select id="instrument"></select>
+      </label>
+
+      <div class="quote">
+        <div class="quote-box sell"><span>Bid</span><strong id="bid">–</strong></div>
+        <div class="quote-box buy"><span>Ask</span><strong id="ask">–</strong></div>
+      </div>
+
+      <div class="side-toggle" role="radiogroup" aria-label="Direction">
+        <button type="button" class="side sell" data-side="sell" role="radio" aria-checked="false">Sell</button>
+        <button type="button" class="side buy is-active" data-side="buy" role="radio" aria-checked="true">Buy</button>
+      </div>
+
+      <label class="field">
+        <span>Size (lots)</span>
+        <input id="size" type="number" step="0.1" min="0.1" value="1.0">
+      </label>
+
+      <div class="row">
+        <label class="field">
+          <span>Stop loss</span>
+          <input id="stopLoss" type="number" step="any" placeholder="optional">
+        </label>
+        <label class="field">
+          <span>Take profit</span>
+          <input id="takeProfit" type="number" step="any" placeholder="optional">
+        </label>
+      </div>
+
+      <p id="form-message" class="message" role="status" aria-live="polite"></p>
+
+      <button type="submit" id="submit" class="submit buy">Place Buy order</button>
+    </form>
+  </main>
+
+  <!-- Bottom drawer with the Trade default suggestion -->
+  <aside id="drawer" class="drawer" aria-labelledby="drawer-title">
+    <button type="button" id="drawer-handle" class="drawer-handle" aria-expanded="false">
+      <span class="grip"></span>
+      <span id="drawer-title">Trade default</span>
+    </button>
+    <div class="drawer-body">
+      <div id="suggestion"></div>
+    </div>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>

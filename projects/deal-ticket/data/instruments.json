@@ -1,0 +1,6 @@
+[
+  { "symbol": "EURUSD", "name": "EUR/USD", "basePrice": 1.0850, "spread": 0.0001, "pipSize": 0.0001, "decimals": 5 },
+  { "symbol": "GBPUSD", "name": "GBP/USD", "basePrice": 1.2700, "spread": 0.0002, "pipSize": 0.0001, "decimals": 5 },
+  { "symbol": "USDJPY", "name": "USD/JPY", "basePrice": 151.50, "spread": 0.02, "pipSize": 0.01, "decimals": 3 },
+  { "symbol": "XAUUSD", "name": "Gold", "basePrice": 2330.00, "spread": 0.40, "pipSize": 0.1, "decimals": 2 }
+]
