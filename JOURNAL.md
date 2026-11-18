@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-17
+
+### What I learned
+Node.js runs JavaScript outside the browser, directly on the computer, so you can write both the frontend and the backend in the same language. A web application has 4 layers: 1) the frontend layer, 2) the API, which receives a request and passes it on, 3) the backend, where the logic lives, and 4) the database. JSON is the format for exchanging data between the frontend and the backend, e.g. responses to be displayed on the frontend.
+
+### What was difficult
+Reading the structure of the code: figuring out what each function does and finding them in the code. I still don't remember what those functions do.
+
+### Question for tomorrow
+No question.
+
+---
+
 ## 2026-11-16
 
 ### What I learned

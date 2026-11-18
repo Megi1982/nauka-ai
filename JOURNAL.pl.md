@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-17
+
+### Czego się nauczyłam
+Node.js uruchamia JavaScript poza przeglądarką, bezpośrednio na komputerze, dzięki czemu w tym samym języku można napisać frontend i backend. Aplikacja webowa ma 4 warstwy: 1) warstwa frontendowa, 2) API, które przyjmuje request i przekazuje go dalej, 3) backend, w którym jest zaszyta logika, oraz 4) baza danych. JSON to format wymiany danych między frontendem a backendem, np. odpowiedzi do wyświetlenia na frontendzie.
+
+### Co było trudne
+Czytanie struktury kodu: ogarnięcie, co robi która funkcja, i znalezienie ich w kodzie. Nadal nie pamiętam, co robią te funkcje.
+
+### Pytanie na jutro
+Brak pytania.
+
+---
+
 ## 2026-11-16
 
 ### Czego się nauczyłam

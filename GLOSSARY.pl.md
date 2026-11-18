@@ -300,6 +300,11 @@ Część aplikacji działająca w przeglądarce, którą użytkownik widzi i kli
 - **Analogia z designu:** Ekrany z Twojego pliku Figma, tylko działające: wireframe (HTML), styl wizualny (CSS) i interakcje z prototypu (JavaScript).
 - **Przykład:** `projects/deal-ticket/frontend/index.html`
 
+### Function
+Funkcja, czyli nazwany fragment kodu wielokrotnego użytku, który robi jedną rzecz. Może przyjmować dane wejściowe (parametry) i zwracać wynik. Nie musisz pamiętać każdej funkcji: jej nazwa zwykle mówi, co robi, a w edytorze możesz ją znaleźć przez Cmd + F albo Cmd + Shift + F.
+- **Analogia z designu:** Komponent: raz zaprojektowany, z wyraźną nazwą, używany wszędzie tam, gdzie jest potrzebny.
+- **Przykład:** W demo deal ticket `applySuggestion()` w `frontend/app.js` wypełnia formularz, a `calculateTradeDefault()` w `backend/tradeDefault.js` liczy sugestię.
+
 ### HTTP method (GET, POST)
 Metoda HTTP, czyli rodzaj zapytania wysyłanego do serwera. **GET** znaczy „daj mi dane” i niczego nie zmienia, a **POST** znaczy „oto nowe dane, zapisz je”.
 - **Analogia z designu:** Różnica między oglądaniem pliku (GET) a dodaniem do niego komentarza (POST).
@@ -349,6 +354,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
 - **Analogia z designu:** package.json to lista bibliotek, z których korzysta plik, a package-lock.json przypina ich dokładne wersje.
 - **Przykład:** `"start": "node backend/server.js"` w `package.json`
+
+### Request and response
+Zapytanie i odpowiedź. **Request** to wiadomość, którą frontend (albo curl) wysyła do serwera: adres, metoda HTTP i czasem dane. **Response** to to, co serwer odsyła: kod statusu i zwykle dane w formacie JSON. Każda interakcja z API to jeden request i jedna odpowiedź.
+- **Analogia z designu:** Jak zlecenie projektowe i oddana makieta: jedna strona prosi, druga odpowiada.
+- **Przykład:** Request `GET /api/trade-default/XAUUSD` → odpowiedź `200` z `{ "side": "buy", "size": 0.2, ... }`
 
 ### Server
 Serwer, czyli program, który czeka na zapytania i na nie odpowiada. Podczas pracy działa na Twoim komputerze (localhost), a na produkcji na komputerze w centrum danych.

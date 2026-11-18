@@ -300,6 +300,11 @@ The part of the application that runs in the browser and that the user sees and 
 - **Design analogy:** The screens from your Figma file, but working: wireframe (HTML), visual style (CSS) and prototype interactions (JavaScript).
 - **Example:** `projects/deal-ticket/frontend/index.html`
 
+### Function
+A named, reusable piece of code that does one job. It can take inputs (parameters) and give back a result. You don't need to remember every function: its name usually says what it does, and you can search for it with Cmd + F or Cmd + Shift + F in the editor.
+- **Design analogy:** A component: designed once, given a clear name, and used wherever it's needed.
+- **Example:** In the deal ticket demo, `applySuggestion()` in `frontend/app.js` fills in the form, and `calculateTradeDefault()` in `backend/tradeDefault.js` calculates the suggestion.
+
 ### HTTP method (GET, POST)
 The type of request sent to the server. **GET** means "give me data" and changes nothing; **POST** means "here is new data, save it".
 - **Design analogy:** The difference between viewing a file (GET) and adding a comment to it (POST).
@@ -349,6 +354,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
 - **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
 - **Example:** `"start": "node backend/server.js"` in `package.json`
+
+### Request and response
+A **request** is a message the frontend (or curl) sends to the server: an address, an HTTP method and sometimes data. A **response** is what the server sends back: a status code and usually data in JSON. Every interaction with an API is one request and one response.
+- **Design analogy:** Like a design request and a delivered mockup: one side asks, the other answers.
+- **Example:** Request `GET /api/trade-default/XAUUSD` → response `200` with `{ "side": "buy", "size": 0.2, ... }`
 
 ### Server
 A program that waits for requests and answers them. During development it runs on your own computer (localhost); in production it runs on a computer in a data center.
