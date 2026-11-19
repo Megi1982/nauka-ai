@@ -17,6 +17,11 @@ Terms are grouped by category and sorted alphabetically within each one.
 
 ## Terminal
 
+### Background process
+A program that keeps running "behind" the terminal, so you can do other things while it works. Typical for a server, which has to keep running the whole time you test the app in the browser.
+- **Design analogy:** Like a file exporting in the background while you keep designing.
+- **Example:** `npm start` run in the background to start the deal ticket server during a test.
+
 ### Command
 An instruction you type into the terminal and confirm with Enter. It usually consists of a program name, options (starting with `-`) and arguments.
 - **Design analogy:** Like a keyboard shortcut, but written out in full: precise and repeatable.
@@ -150,6 +155,11 @@ A file in the repository folder that Git doesn't track yet: it has never been ad
 
 ## GitHub
 
+### Bug report
+A description of an error that lets someone else reproduce and fix it. Format: **steps to reproduce**, **current behaviour**, **expected behaviour** and **risk** (what can go wrong for the user). On GitHub it usually lives in an issue.
+- **Design analogy:** Like a good usability-test note: what the user did, what happened, what should have happened and why it matters.
+- **Example:** "After switching the instrument, the old stop loss and take profit stay in the form" in the deal ticket demo.
+
 ### Code review
 Another person reads your changes before they're merged, leaves comments and suggests improvements.
 - **Design analogy:** A design critique or design review.
@@ -247,6 +257,11 @@ A Markdown file with step-by-step instructions that Claude follows when I type `
 - **Design analogy:** Like a master component in Figma: you design the recipe once, then insert it in one move and it always works the same way.
 - **Example:** `/dziennik` runs `.claude/skills/dziennik/SKILL.md`
 
+### Tokens
+The units in which AI counts text: a token is usually a piece of a word, a short word or a punctuation mark. Everything in a conversation (my messages, Claude's answers, files Claude has read) is counted in tokens and fills the context, which has a size limit. `/clear` clears the conversation context so you can start a new topic from scratch.
+- **Design analogy:** Like the canvas of an artboard: everything you put on it takes up space, and `/clear` is starting with an empty frame.
+- **Example:** `/clear` before a new, unrelated task
+
 ### Tools (Bash, Read, Edit, Write)
 The "hands" Claude uses to act. Each step on screen is labeled with the tool's name and what it's applied to:
 - **Bash:** runs a command in the terminal (e.g. `git status`, `date`).
@@ -270,6 +285,11 @@ The part of the application that runs on the server: business logic, calculation
 - **Design analogy:** The kitchen in a restaurant: guests only see the dish.
 - **Example:** `projects/deal-ticket/backend/tradeDefault.js` (calculates the Trade default)
 
+### Browser cache and hard refresh
+The **browser cache** is the browser's local store of downloaded files (e.g. JavaScript), kept so pages load faster. Because of it, after a code change the browser may still show the old version. A **hard refresh** reloads the page and skips the cache.
+- **Design analogy:** Like a stale thumbnail of a Figma file: the file has changed, but the preview still shows the old version until it's regenerated.
+- **Example:** Cmd + Shift + R in Chrome on a Mac
+
 ### Database
 The place where an application stores data permanently. Usually a dedicated program (e.g. PostgreSQL); in the demo it's just JSON files.
 - **Design analogy:** The pantry: ingredients are stored there and the kitchen fetches them when needed.
@@ -284,6 +304,11 @@ Someone else's ready-made code that your project uses, e.g. a library. Listed in
 One specific address in an API, together with its HTTP method, e.g. `GET /api/instruments`. Each endpoint does one job.
 - **Design analogy:** One item on the menu.
 - **Example:** `app.get('/api/instruments', ...)` in `server.js`
+
+### Event listener
+A function "attached" to an event, such as a click, a dropdown change or a form submit. The function doesn't run on its own: the browser calls it when that event happens.
+- **Design analogy:** An interaction in a Figma prototype: "On click → Navigate to…".
+- **Example:** `els.instrument.addEventListener('change', onInstrumentChange);` in `frontend/app.js`
 
 ### Express
 A popular, small Node.js library for building servers and APIs. It lets you say in one line: "when someone asks for this address, do this".
@@ -364,6 +389,11 @@ A **request** is a message the frontend (or curl) sends to the server: an addres
 A program that waits for requests and answers them. During development it runs on your own computer (localhost); in production it runs on a computer in a data center.
 - **Design analogy:** A receptionist who waits for visitors and directs each one to the right place.
 - **Example:** `npm start` → "Deal Ticket demo running at http://localhost:3000"
+
+### State
+What the application "remembers" right now: what's selected, what was fetched, what's shown. The screen is drawn from the state. A common bug is state that isn't reset when the context changes, such as old form values after switching the instrument.
+- **Design analogy:** The current variant and properties of a component: change them and the component looks different.
+- **Example:** `const state = { instruments: [], side: 'buy', suggestion: null };` in `frontend/app.js`
 
 ### Validation (client and server)
 Checking that data makes sense, e.g. a stop loss below the price for a Buy order. In the **frontend** it gives quick feedback to the user; in the **backend** it protects the data, because anyone can bypass the browser and send a request directly.

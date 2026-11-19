@@ -98,9 +98,18 @@ function showMessage(text, type) {
   els.message.className = `message ${type || ''}`;
 }
 
+// Values typed or applied for one instrument make no sense for another (e.g. Gold SL 2313 vs GBP/USD ~1.27).
+// Clear them; the new suggestion waits in the drawer until the user clicks "Apply to ticket".
+function clearTicketFields() {
+  els.size.value = '';
+  els.stopLoss.value = '';
+  els.takeProfit.value = '';
+}
+
 // ---------- Actions ----------
 async function onInstrumentChange() {
   renderPrices();
+  clearTicketFields();
   showMessage('');
   state.suggestion = await fetchTradeDefault(els.instrument.value);
   renderSuggestion();

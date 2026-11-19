@@ -17,6 +17,11 @@ Pojęcia są pogrupowane w kategorie, a w każdej kategorii ułożone alfabetycz
 
 ## Terminal
 
+### Background process
+Proces w tle, czyli program, który działa „za” terminalem, więc w tym czasie możesz robić coś innego. Tak zwykle uruchamia się serwer, który musi działać przez cały czas, gdy testujesz aplikację w przeglądarce.
+- **Analogia z designu:** Jak eksport pliku w tle, podczas gdy dalej projektujesz.
+- **Przykład:** `npm start` uruchomione w tle, żeby serwer deal ticketa działał podczas testu.
+
 ### Command
 Polecenie, które wpisujesz w terminalu i zatwierdzasz Enterem. Zwykle składa się z nazwy programu, opcji (zaczynających się od `-`) i argumentów.
 - **Analogia z designu:** Jak skrót klawiszowy, tylko zapisany w całości: precyzyjny i powtarzalny.
@@ -150,6 +155,11 @@ Nieśledzony plik, czyli plik w folderze repozytorium, którego Git jeszcze nie 
 
 ## GitHub
 
+### Bug report
+Zgłoszenie błędu, czyli opis, który pozwala komuś innemu błąd odtworzyć i naprawić. Format: **kroki do odtworzenia**, **obecne zachowanie**, **oczekiwane zachowanie** i **ryzyko** (co może pójść źle dla użytkownika). Na GitHubie zwykle trafia do issue.
+- **Analogia z designu:** Jak dobra notatka z testu użyteczności: co zrobił użytkownik, co się stało, co powinno się stać i dlaczego to ważne.
+- **Przykład:** „Po zmianie instrumentu w formularzu zostają stare wartości stop loss i take profit” w demo deal ticket.
+
 ### Code review
 Inna osoba czyta Twoje zmiany, zanim zostaną połączone z gałęzią główną, komentuje je i proponuje poprawki.
 - **Analogia z designu:** Design critique albo design review.
@@ -247,6 +257,11 @@ Plik Markdown z instrukcjami krok po kroku, które Claude wykonuje, gdy wpiszę 
 - **Analogia z designu:** Jak master component w Figmie: raz projektujesz przepis, potem wstawiasz go jednym ruchem i zawsze działa tak samo.
 - **Przykład:** `/dziennik` uruchamia `.claude/skills/dziennik/SKILL.md`
 
+### Tokens
+Tokeny, czyli jednostki, w których AI liczy tekst: token to zwykle kawałek słowa, krótkie słowo albo znak interpunkcyjny. Wszystko w rozmowie (moje wiadomości, odpowiedzi Claude'a, przeczytane pliki) liczy się w tokenach i zapełnia kontekst, który ma limit wielkości. `/clear` czyści kontekst rozmowy, żeby zacząć nowy temat od zera.
+- **Analogia z designu:** Jak powierzchnia artboardu: wszystko, co na nim położysz, zajmuje miejsce, a `/clear` to start od pustej ramki.
+- **Przykład:** `/clear` przed nowym, niezwiązanym zadaniem
+
 ### Tools (Bash, Read, Edit, Write)
 Narzędzia, czyli „ręce”, którymi Claude działa. Każdy krok na ekranie jest podpisany nazwą narzędzia i tym, na czym działa:
 - **Bash:** uruchamia polecenie w terminalu (np. `git status`, `date`).
@@ -270,6 +285,11 @@ Część aplikacji działająca na serwerze: logika biznesowa, obliczenia, walid
 - **Analogia z designu:** Kuchnia w restauracji: goście widzą tylko danie.
 - **Przykład:** `projects/deal-ticket/backend/tradeDefault.js` (liczy Trade default)
 
+### Browser cache and hard refresh
+**Cache przeglądarki** to lokalny schowek, w którym przeglądarka trzyma pobrane pliki (np. JavaScript), żeby strony ładowały się szybciej. Przez to po zmianie w kodzie przeglądarka może dalej pokazywać starą wersję. **Hard refresh** to odświeżenie strony z pominięciem tego schowka.
+- **Analogia z designu:** Jak nieaktualna miniatura pliku w Figmie: plik się zmienił, ale podgląd pokazuje starą wersję, dopóki się nie odświeży.
+- **Przykład:** Cmd + Shift + R w Chrome na Macu
+
 ### Database
 Baza danych, czyli miejsce, w którym aplikacja trwale przechowuje dane. Zwykle to osobny program (np. PostgreSQL), a w demo to po prostu pliki JSON.
 - **Analogia z designu:** Spiżarnia: tam leżą składniki, a kuchnia sięga po nie, gdy są potrzebne.
@@ -284,6 +304,11 @@ Zależność, czyli cudzy, gotowy kod, z którego korzysta Twój projekt, np. bi
 Jeden konkretny adres w API razem z metodą HTTP, np. `GET /api/instruments`. Każdy endpoint robi jedną rzecz.
 - **Analogia z designu:** Jedna pozycja w menu.
 - **Przykład:** `app.get('/api/instruments', ...)` w `server.js`
+
+### Event listener
+Nasłuchiwacz zdarzeń, czyli funkcja „podpięta” pod zdarzenie, np. kliknięcie, zmianę wartości w dropdownie albo wysłanie formularza. Funkcja nie uruchamia się sama: przeglądarka wywołuje ją, gdy to zdarzenie nastąpi.
+- **Analogia z designu:** Interakcja w prototypie Figmy: „On click → Navigate to…”.
+- **Przykład:** `els.instrument.addEventListener('change', onInstrumentChange);` w `frontend/app.js`
 
 ### Express
 Popularna, mała biblioteka dla Node.js do budowania serwerów i API. Pozwala powiedzieć w jednej linijce: „gdy ktoś poprosi o ten adres, zrób to”.
@@ -364,6 +389,11 @@ Zapytanie i odpowiedź. **Request** to wiadomość, którą frontend (albo curl)
 Serwer, czyli program, który czeka na zapytania i na nie odpowiada. Podczas pracy działa na Twoim komputerze (localhost), a na produkcji na komputerze w centrum danych.
 - **Analogia z designu:** Recepcjonista, który czeka na gości i kieruje każdego we właściwe miejsce.
 - **Przykład:** `npm start` → „Deal Ticket demo running at http://localhost:3000”
+
+### State
+Stan, czyli to, co aplikacja „pamięta” w danej chwili: co jest wybrane, co zostało pobrane, co jest pokazane. Ekran rysuje się na podstawie stanu. Częsty błąd to stan, którego nie wyczyszczono po zmianie kontekstu, np. stare wartości w formularzu po przełączeniu instrumentu.
+- **Analogia z designu:** Aktualny wariant i właściwości komponentu: zmieniasz je i komponent wygląda inaczej.
+- **Przykład:** `const state = { instruments: [], side: 'buy', suggestion: null };` w `frontend/app.js`
 
 ### Validation (client and server)
 Walidacja, czyli sprawdzanie, czy dane mają sens, np. czy stop loss jest poniżej ceny przy zleceniu Buy. We **frontendzie** daje użytkownikowi szybki feedback, a w **backendzie** chroni dane, bo każdy może ominąć przeglądarkę i wysłać zapytanie bezpośrednio.
