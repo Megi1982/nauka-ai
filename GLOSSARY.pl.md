@@ -242,6 +242,11 @@ Prośba o zgodę, którą Claude wyświetla przed działaniem, które nie zosta�
 - **Analogia z designu:** Jak okno „Publish library changes?” w Figmie: ostatnia chwila, żeby sprawdzić, co wychodzi, zanim to się stanie.
 - **Przykład:** „Do you want to proceed?” → Yes / Yes, and don't ask again / No
 
+### Permission rules (allow, ask)
+Listy w sekcji `permissions` pliku ustawień, które decydują, polecenie po poleceniu, co Claude może zrobić. Polecenia z listy **allow** uruchamiają się bez pytania. Polecenia z listy **ask** zawsze wymagają mojej zgody, nawet jeśli szersza reguła w `allow` by je przepuściła. `:*` na końcu znaczy „z dowolnymi dodatkami”.
+- **Analogia z designu:** Jak zablokowana warstwa w Figmie: na co dzień nic się nie zmienia, ale chroni przed przypadkową edycją.
+- **Przykład:** `"ask": ["Bash(git push:*)"]` w `.claude/settings.local.json`, dzięki czemu Claude zawsze pyta, zanim cokolwiek wyśle na GitHub.
+
 ### Plan mode
 Tryb uprawnień, w którym Claude najpierw tylko czyta pliki i przygotowuje plan. Mogę go zatwierdzić albo poprawić („Tell Claude what to change”), a zmiany zaczynają się dopiero po moim zatwierdzeniu. Warto go używać przy większych zadaniach z wieloma plikami i decyzjami, a nie przy drobnych poprawkach.
 - **Analogia z designu:** Kickoff z zespołem: najpierw wspólnie uzgadniamy podejście, a dopiero potem ktoś zaczyna pracę.

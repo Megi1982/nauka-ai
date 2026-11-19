@@ -242,6 +242,11 @@ The question Claude shows before it takes an action that isn't pre-approved, e.g
 - **Design analogy:** Like the "Publish library changes?" dialog in Figma: one last chance to check what's going out before it happens.
 - **Example:** "Do you want to proceed?" → Yes / Yes, and don't ask again / No
 
+### Permission rules (allow, ask)
+Lists in `permissions` in a settings file that decide, command by command, what Claude may do. Commands on the **allow** list run without asking. Commands on the **ask** list always need my approval, even if a broader rule in `allow` would let them through. `:*` at the end means "with anything after it".
+- **Design analogy:** Like locking a layer in Figma: nothing changes day to day, but it protects against an accidental edit.
+- **Example:** `"ask": ["Bash(git push:*)"]` in `.claude/settings.local.json`, so Claude always asks before sending anything to GitHub.
+
 ### Plan mode
 A permission mode in which Claude first only reads files and prepares a plan. I can approve the plan or correct it ("Tell Claude what to change"), and Claude only starts making changes after I approve it. Worth using for bigger tasks with many files and decisions, not for small fixes.
 - **Design analogy:** A kickoff with the team: first we agree on the approach together, and only then does someone start the work.
