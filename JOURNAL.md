@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-19
+
+### What I learned
+I learned that every function has its own job and its own order. And that it's worth naming it well and describing what it does, so that it's readable in the code for someone else, e.g. a person doing a code review.
+
+### What was difficult
+Understanding the logic of the functions: which function calls what, and in what order.
+
+### Question for tomorrow
+The day after tomorrow, because I won't manage a lesson tomorrow. Let's start with a quiz and a few random questions to see whether the knowledge has settled in.
+
+---
+
 ## 2026-11-17
 
 ### What I learned

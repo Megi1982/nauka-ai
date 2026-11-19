@@ -330,6 +330,11 @@ Funkcja, czyli nazwany fragment kodu wielokrotnego użytku, który robi jedną r
 - **Analogia z designu:** Komponent: raz zaprojektowany, z wyraźną nazwą, używany wszędzie tam, gdzie jest potrzebny.
 - **Przykład:** W demo deal ticket `applySuggestion()` w `frontend/app.js` wypełnia formularz, a `calculateTradeDefault()` w `backend/tradeDefault.js` liczy sugestię.
 
+### Function call
+Wywołanie funkcji, czyli uruchomienie jej przez wpisanie nazwy z nawiasami, np. `renderPrices()`. Funkcja może wywoływać inne funkcje, więc jedno wywołanie potrafi uruchomić cały łańcuch w ustalonej kolejności. Żeby zrozumieć logikę, zacznij od punktu startowego i czytaj, która funkcja wywołuje którą.
+- **Analogia z designu:** Jak user flow: jeden ekran prowadzi do następnego w określonej kolejności, a czytasz go od ekranu startowego.
+- **Przykład:** `init()` → `onInstrumentChange()` → `renderPrices()`, `fetchTradeDefault()`, `renderSuggestion()`, `setDrawer(true)` w `frontend/app.js`
+
 ### HTTP method (GET, POST)
 Metoda HTTP, czyli rodzaj zapytania wysyłanego do serwera. **GET** znaczy „daj mi dane” i niczego nie zmienia, a **POST** znaczy „oto nowe dane, zapisz je”.
 - **Analogia z designu:** Różnica między oglądaniem pliku (GET) a dodaniem do niego komentarza (POST).

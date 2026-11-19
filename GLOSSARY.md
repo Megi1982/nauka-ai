@@ -330,6 +330,11 @@ A named, reusable piece of code that does one job. It can take inputs (parameter
 - **Design analogy:** A component: designed once, given a clear name, and used wherever it's needed.
 - **Example:** In the deal ticket demo, `applySuggestion()` in `frontend/app.js` fills in the form, and `calculateTradeDefault()` in `backend/tradeDefault.js` calculates the suggestion.
 
+### Function call
+Running a function by writing its name with brackets, e.g. `renderPrices()`. A function can call other functions, so one call can start a whole chain in a set order. To follow the logic, start from the entry point and read which function calls which.
+- **Design analogy:** Like a user flow: one screen leads to the next in a defined order, and you read it from the starting screen.
+- **Example:** `init()` → `onInstrumentChange()` → `renderPrices()`, `fetchTradeDefault()`, `renderSuggestion()`, `setDrawer(true)` in `frontend/app.js`
+
 ### HTTP method (GET, POST)
 The type of request sent to the server. **GET** means "give me data" and changes nothing; **POST** means "here is new data, save it".
 - **Design analogy:** The difference between viewing a file (GET) and adding a comment to it (POST).

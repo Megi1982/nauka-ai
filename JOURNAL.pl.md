@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-19
+
+### Czego się nauczyłam
+Nauczyłam się, że każda funkcja ma swoje zadanie i kolejność. Że warto dobrze ją nazwać i opisać jej funkcję, aby było to czytelne w kodzie dla kogoś innego, kto będzie robił np. code review.
+
+### Co było trudne
+Zrozumienie logiki funkcji: która funkcja co wywołuje i w jakiej kolejności.
+
+### Pytanie na jutro
+Pojutrze, bo jutro nie dam rady zrobić lekcji. Zacznijmy od sprawdzianu i kilku randomowych pytań, aby zobaczyć, czy wiedza mi się jakoś ułożyła.
+
+---
+
 ## 2026-11-17
 
 ### Czego się nauczyłam
