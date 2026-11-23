@@ -295,6 +295,16 @@ The **browser cache** is the browser's local store of downloaded files (e.g. Jav
 - **Design analogy:** Like a stale thumbnail of a Figma file: the file has changed, but the preview still shows the old version until it's regenerated.
 - **Example:** Cmd + Shift + R in Chrome on a Mac
 
+### Business logic
+The rules and calculations that make the application do its actual job, as opposed to receiving requests or storing data. It's worth keeping it in a separate file, so it can be changed and tested without touching the rest.
+- **Design analogy:** Like the design principles behind a product: they decide what happens, whatever tool or screen you apply them in.
+- **Example:** `backend/tradeDefault.js` calculates the Trade default from trade history (most frequent side, median size, SL and TP).
+
+### Data access layer
+The one part of the application that reads and writes the database. The rest of the code asks it for data instead of opening files itself, so if the database ever changed (e.g. to PostgreSQL), only this layer would need to change.
+- **Design analogy:** Like a single source of truth in a component library: every file links to it, so a change is made in one place.
+- **Example:** `backend/db.js` with `getInstruments()`, `getTrades()` and `addOrder()`
+
 ### Database
 The place where an application stores data permanently. Usually a dedicated program (e.g. PostgreSQL); in the demo it's just JSON files.
 - **Design analogy:** The pantry: ingredients are stored there and the kitchen fetches them when needed.

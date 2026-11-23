@@ -295,6 +295,16 @@ Część aplikacji działająca na serwerze: logika biznesowa, obliczenia, walid
 - **Analogia z designu:** Jak nieaktualna miniatura pliku w Figmie: plik się zmienił, ale podgląd pokazuje starą wersję, dopóki się nie odświeży.
 - **Przykład:** Cmd + Shift + R w Chrome na Macu
 
+### Business logic
+Logika biznesowa, czyli reguły i obliczenia, dzięki którym aplikacja robi to, do czego naprawdę służy, w odróżnieniu od odbierania zapytań czy przechowywania danych. Warto trzymać ją w osobnym pliku, żeby można ją było zmieniać i testować bez ruszania reszty.
+- **Analogia z designu:** Jak zasady projektowe produktu: decydują, co się dzieje, niezależnie od tego, w jakim narzędziu czy na jakim ekranie je stosujesz.
+- **Przykład:** `backend/tradeDefault.js` liczy Trade default z historii transakcji (najczęstszy kierunek, mediana wielkości, SL i TP).
+
+### Data access layer
+Warstwa dostępu do danych, czyli jedyna część aplikacji, która czyta i zapisuje bazę danych. Reszta kodu prosi ją o dane, zamiast samodzielnie otwierać pliki, więc gdyby baza się kiedyś zmieniła (np. na PostgreSQL), trzeba by zmienić tylko tę warstwę.
+- **Analogia z designu:** Jak jedno źródło prawdy w bibliotece komponentów: każdy plik się do niego odwołuje, więc zmianę robisz w jednym miejscu.
+- **Przykład:** `backend/db.js` z funkcjami `getInstruments()`, `getTrades()` i `addOrder()`
+
 ### Database
 Baza danych, czyli miejsce, w którym aplikacja trwale przechowuje dane. Zwykle to osobny program (np. PostgreSQL), a w demo to po prostu pliki JSON.
 - **Analogia z designu:** Spiżarnia: tam leżą składniki, a kuchnia sięga po nie, gdy są potrzebne.

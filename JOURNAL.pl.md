@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-23
+
+### Czego się nauczyłam
+Jak działa backend na przykładzie „Place Order”. Frontend wysyła zapytanie poprzez API do serwera, używając formatu JSON. Backend sprawdza poprawność zapytania i reguły, jeśli jest to poprawne, zapisuje w bazie danych, a następnie za pomocą JSON odsyła informację zwrotną na frontend z potwierdzeniem zlecenia. Podczas trwania tej operacji frontend tymczasowo blokuje przycisk „Place Order”, aby nie poszło kolejne zapytanie, gdy poprzednie jest jeszcze obsługiwane.
+
+### Co było trudne
+Czytanie kodu: drzewka backendu i te wszystkie nazwy (ciężko je zapamiętać). Ale wiem, że na serwerze są 3 rodzaje plików: pierwszy odbiera zlecenie z frontendu, drugi liczy logikę biznesową (sugestię Trade default), a trzeci zapisuje w bazie danych. Reguły zlecenia przy „Place Order” sprawdza ten pierwszy, czyli `server.js`.
+
+### Pytanie na jutro
+Jutro zacznijmy od pytań z review backendu, czyli tego, co dziś zrobiliśmy.
+
+---
+
 ## 2026-11-19
 
 ### Czego się nauczyłam

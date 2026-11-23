@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-23
+
+### What I learned
+How the backend works, using "Place Order" as an example. The frontend sends a request through the API to the server, using the JSON format. The backend checks that the request is valid and follows the rules; if it is, it saves it in the database, and then sends feedback back to the frontend as JSON, confirming the order. While this is happening, the frontend temporarily disables the "Place Order" button, so that another request isn't sent while the previous one is still being handled.
+
+### What was difficult
+Reading the code: the backend file tree and all those names (they're hard to remember). But I know there are 3 kinds of files on the server: the first receives the order from the frontend, the second calculates the business logic (the Trade default suggestion), and the third saves to the database. For "Place Order", the order's rules are checked by the first one, `server.js`.
+
+### Question for tomorrow
+Tomorrow, let's start with review questions about the backend, i.e. what we did today.
+
+---
+
 ## 2026-11-19
 
 ### What I learned
