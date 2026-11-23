@@ -370,6 +370,11 @@ Mediana i dominanta, czyli proste statystyki użyte w demo jako heurystyka (regu
 - **Analogia z designu:** W badaniach z użytkownikami dominanta to odpowiedź, którą dało najwięcej osób, a mediana mówi, co robi typowy użytkownik, nawet jeśli jedna osoba jest skrajna.
 - **Przykład:** Wielkości 0.2, 0.2, 0.2, 0.3, 1.5 → mediana 0.2 (1.5 jej nie zmienia)
 
+### Middleware
+Funkcja, którą serwer uruchamia przy każdym zapytaniu, zanim trafi ono do właściwego endpointu. Każde middleware wykonuje jedną czynność przygotowawczą, np. odczytuje JSON albo wysyła pliki, a potem przekazuje zapytanie dalej.
+- **Analogia z designu:** Jak etapy, przez które przechodzi projekt przed review: sprawdzenie pisowni i kontrastu, stosowane tak samo do każdego pliku.
+- **Przykład:** `app.use(express.json())` (odczytuje treść JSON do `req.body`) i `app.use(express.static(...))` (wysyła pliki frontendu) w `server.js`
+
 ### Node.js
 Program, który uruchamia JavaScript poza przeglądarką. To ten sam silnik JavaScriptu co w przeglądarce (V8 z Chrome'a), tylko uruchomiony bezpośrednio na komputerze. Dzięki temu można w nim pisać backend, w tym samym języku co frontend.
 - **Analogia z designu:** Jak możliwość używania tych samych design tokenów w Figmie i w kodzie: jeden język, dwa miejsca.
@@ -389,6 +394,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
 - **Analogia z designu:** package.json to lista bibliotek, z których korzysta plik, a package-lock.json przypina ich dokładne wersje.
 - **Przykład:** `"start": "node backend/server.js"` w `package.json`
+
+### Pure function
+Czysta funkcja, czyli funkcja, która tylko przyjmuje dane i zwraca wynik. Nie czyta plików, nie wie nic o HTTP i niczego nie zmienia poza sobą, więc te same dane wejściowe zawsze dają ten sam wynik. Dzięki temu łatwo ją testować i używać ponownie.
+- **Analogia z designu:** Jak komponent w design systemie: te same propsy zawsze dają ten sam wygląd, gdziekolwiek go wstawisz.
+- **Przykład:** `calculateTradeDefault(instrument, trades, price)` w `backend/tradeDefault.js`
 
 ### Request and response
 Zapytanie i odpowiedź. **Request** to wiadomość, którą frontend (albo curl) wysyła do serwera: adres, metoda HTTP i czasem dane. **Response** to to, co serwer odsyła: kod statusu i zwykle dane w formacie JSON. Każda interakcja z API to jeden request i jedna odpowiedź.

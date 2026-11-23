@@ -370,6 +370,11 @@ Simple statistics used in the demo as a heuristic (a rule of thumb). **Mode** is
 - **Design analogy:** In user research, the mode is the answer most people gave, and the median tells you what a typical user does, even if one person is extreme.
 - **Example:** Sizes 0.2, 0.2, 0.2, 0.3, 1.5 → median 0.2 (the 1.5 doesn't change it)
 
+### Middleware
+A function the server runs on every request before it reaches the right endpoint. Each middleware does one preparatory job, such as reading JSON or serving files, and then passes the request on.
+- **Design analogy:** Like the steps a design goes through before review: a spellcheck and a contrast check, applied the same way to every file.
+- **Example:** `app.use(express.json())` (reads the JSON body into `req.body`) and `app.use(express.static(...))` (serves the frontend files) in `server.js`
+
 ### Node.js
 A program that runs JavaScript outside the browser. It's the same JavaScript engine that runs in the browser (V8 from Chrome), just started directly on the computer. That's why you can write a backend in it, in the same language as the frontend.
 - **Design analogy:** Like being able to use the same design tokens both in Figma and in code: one language, two places.
@@ -389,6 +394,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
 - **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
 - **Example:** `"start": "node backend/server.js"` in `package.json`
+
+### Pure function
+A function that only takes data in and gives a result back. It doesn't read files, doesn't know about HTTP and changes nothing outside itself, so the same inputs always give the same result. That makes it easy to test and to reuse.
+- **Design analogy:** Like a component in a design system: the same props always give the same look, wherever you place it.
+- **Example:** `calculateTradeDefault(instrument, trades, price)` in `backend/tradeDefault.js`
 
 ### Request and response
 A **request** is a message the frontend (or curl) sends to the server: an address, an HTTP method and sometimes data. A **response** is what the server sends back: a status code and usually data in JSON. Every interaction with an API is one request and one response.
