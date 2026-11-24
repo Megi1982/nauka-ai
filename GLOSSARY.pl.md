@@ -469,6 +469,11 @@ Standardowa jednostka małych ruchów ceny. Dla większości par walutowych to 4
 - **Analogia z designu:** Jak krok przesuwania strzałkami w Figmie (1 px albo 10 px z Shiftem): stała jednostka ruchu, dzięki której łatwo porównać odległości.
 - **Przykład:** `"pipSize": 0.0001` dla EUR/USD w `data/instruments.json`; `tradeDefault.js` mnoży `stopLossPips × pipSize`, żeby zamienić pipsy na cenę.
 
+### Slippage
+Poślizg cenowy, czyli różnica między ceną widzianą na ekranie w chwili składania zlecenia a ceną, po której serwer faktycznie je przyjął. Powstaje, bo cena zmienia się między kliknięciem a wykonaniem zlecenia. Poślizg może działać na Twoją niekorzyść albo na korzyść.
+- **Analogia z designu:** Jak handoff, przy którym developer buduje z nowszej wersji pliku niż ta, którą zatwierdziłaś: to, co widziałaś, i to, co dostałaś, trochę się różni, bo w międzyczasie coś się zmieniło.
+- **Przykład:** Deal ticket pokazuje dla EUR/USD ask 1.08588, a zlecenie zostaje przyjęte po 1.08594 (o 0.6 pipsa gorzej). Ekran odświeża ceny co 2 sekundy, a `server.js` bierze jako `entryPrice` swoją aktualną cenę.
+
 ### Spread
 Różnica między ceną ask a ceną bid. To ukryty koszt każdej transakcji: jeśli kupisz i od razu sprzedasz, tracisz właśnie spread.
 - **Analogia z designu:** Jak odstęp między dwoma sąsiednimi elementami: mały, ale zawsze jest i trzeba go uwzględnić.

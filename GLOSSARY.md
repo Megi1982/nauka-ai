@@ -469,6 +469,11 @@ The standard unit for small price moves. For most currency pairs it's the 4th de
 - **Design analogy:** Like a nudge step in Figma (1 px or 10 px with Shift): a fixed unit of movement that makes distances easy to compare.
 - **Example:** `"pipSize": 0.0001` for EUR/USD in `data/instruments.json`; `tradeDefault.js` multiplies `stopLossPips × pipSize` to turn pips into a price.
 
+### Slippage
+The difference between the price you saw on screen when you placed the order and the price at which the server actually accepted it. It happens because the price keeps moving between the moment you click and the moment the order is executed. Slippage can work against you or in your favour.
+- **Design analogy:** Like a handoff where the developer builds from a newer version of the file than the one you reviewed: what you saw and what you got differ slightly, because things changed in between.
+- **Example:** The deal ticket shows an ask of 1.08588 for EUR/USD, but the order is accepted at 1.08594 (0.6 pip worse). The screen refreshes prices every 2 seconds, while `server.js` uses its own current price as `entryPrice`.
+
 ### Spread
 The difference between the ask and the bid price. It's the hidden cost of every trade: when you buy and sell immediately, you lose the spread.
 - **Design analogy:** Like the gap between two adjacent elements: small, but always there, and you have to account for it.
