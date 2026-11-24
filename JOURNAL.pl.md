@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-24
+
+### Czego się nauczyłam
+Developerzy pracują na osobnych branchach i jak chcą dodać jakąś poprawkę do main, muszą zrobić pull request. Trzeba dobrze opisać problem, jaki naprawiają, aby inny developer sprawdził, jaki problem dany pull request rozwiąże. Trzeba też po merge'u do main usuwać branch, ale wszystko jest odwracalne, dlatego nie należy bać się zmian. Funkcja git pull też jest przydatna, bo pozwala zsynchronizować wersję lokalną z najnowszym stanem main na GitHubie.
+
+### Co było trudne
+Czytanie kodu i wyłapywanie istotnych detali. Dużo tych linii kodu i ciężko czasem wyłapać i przeczytać wszystko.
+
+### Pytanie na jutro
+Czy pamiętam, jak przejść cały cykl: branch → poprawka → pull request → merge → pull → usunięcie brancha?
+
+---
+
 ## 2026-11-23
 
 ### Czego się nauczyłam

@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-24
+
+### What I learned
+Developers work on separate branches, and when they want to add a fix to main, they have to open a pull request. You need to describe the problem you're fixing well, so that another developer can check what problem the pull request will solve. After merging to main you also need to delete the branch, but everything is reversible, so you shouldn't be afraid of changes. git pull is useful too, because it lets you sync your local version with the latest state of main on GitHub.
+
+### What was difficult
+Reading the code and catching the important details. There are a lot of lines of code, and sometimes it's hard to catch and read everything.
+
+### Question for tomorrow
+Do I remember how to go through the whole cycle: branch → fix → pull request → merge → pull → deleting the branch?
+
+---
+
 ## 2026-11-23
 
 ### What I learned

@@ -101,6 +101,11 @@ A comparison that shows what changed between two versions: added lines (`+`) and
 - **Design analogy:** Like putting "before" and "after" screens side by side.
 - **Example:** `git diff`
 
+### Fast-forward
+The simplest way Git can bring in new commits: when your branch has nothing new of its own, Git just moves it forward to the latest commit, without combining anything. You'll see the word "Fast-forward" after `git pull` when you haven't changed anything locally.
+- **Design analogy:** Like updating a file you haven't touched to the latest version: there's nothing to reconcile, you just jump ahead.
+- **Example:** `git pull` on `main` → "Updating 2838d4b..110fba0 Fast-forward"
+
 ### Git
 A version control system: a program that remembers the full history of changes to files in a project. It runs locally on your computer.
 - **Design analogy:** Figma's version history, but for any kind of file and fully under your control.
@@ -110,6 +115,11 @@ A version control system: a program that remembers the full history of changes t
 Chooses which changes go into the next commit. The **staging area** is a kind of waiting room for changes.
 - **Design analogy:** Like selecting frames before exporting: only the selected ones get exported.
 - **Example:** `git add README.md`
+
+### git branch -d (deleting a branch)
+Deletes a local branch once its work is merged. Small `-d` is the safe version: Git refuses if the branch has commits that aren't in `main` yet. Capital `-D` deletes without checking, so use it only when you're sure. A deleted branch can still be recovered from its last commit hash.
+- **Design analogy:** Deleting a Figma page only after checking that all its frames have been moved to the main page.
+- **Example:** `git branch -d fix/direction-after-instrument-change` → "Deleted branch … (was 3501582)"
 
 ### git log
 Shows the commit history: who changed what, when, and why.
@@ -135,6 +145,11 @@ The default, main branch of a repository: the "official" version of the project.
 Combining changes from one branch into another.
 - **Design analogy:** Merging a Figma branch back into the main file.
 - **Example:** `git merge new-idea`
+
+### Merge commit
+A special commit that records the moment two branches were joined. GitHub creates one when you merge a pull request; it has two "parents": the last commit of `main` and the last commit of the branch.
+- **Design analogy:** The entry in Figma's version history saying "Merged branch …": a marker of when the branch went into the main file.
+- **Example:** `110fba0 Merge pull request #1 from Megi1982/fix/direction-after-instrument-change`
 
 ### origin
 The conventional name for the main remote. It's just a label for a long address.

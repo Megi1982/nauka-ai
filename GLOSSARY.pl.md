@@ -101,6 +101,11 @@ Porównanie, które pokazuje, co się zmieniło między dwiema wersjami: linie d
 - **Analogia z designu:** Jak ułożenie ekranów „przed” i „po” obok siebie.
 - **Przykład:** `git diff`
 
+### Fast-forward
+Przewinięcie do przodu, czyli najprostszy sposób, w jaki Git przyjmuje nowe commity: gdy Twoja gałąź nie ma niczego nowego u siebie, Git po prostu przesuwa ją do najnowszego commita, bez łączenia czegokolwiek. Słowo „Fast-forward” zobaczysz po `git pull`, gdy niczego nie zmieniałaś lokalnie.
+- **Analogia z designu:** Jak aktualizacja pliku, którego nie ruszałaś, do najnowszej wersji: nie ma czego uzgadniać, po prostu przeskakujesz do przodu.
+- **Przykład:** `git pull` na `main` → „Updating 2838d4b..110fba0 Fast-forward”
+
 ### Git
 System kontroli wersji, czyli program, który pamięta pełną historię zmian w plikach projektu. Działa lokalnie, na Twoim komputerze.
 - **Analogia z designu:** Historia wersji z Figmy, tylko dla dowolnych plików i w pełni pod Twoją kontrolą.
@@ -110,6 +115,11 @@ System kontroli wersji, czyli program, który pamięta pełną historię zmian w
 Wybiera, które zmiany trafią do następnego commita. **Staging** to rodzaj poczekalni dla zmian.
 - **Analogia z designu:** Jak zaznaczanie frame'ów przed eksportem: wyeksportują się tylko zaznaczone.
 - **Przykład:** `git add README.md`
+
+### git branch -d (deleting a branch)
+Usuwa lokalną gałąź, gdy jej praca jest już zmergowana. Małe `-d` to wersja bezpieczna: Git odmówi, jeśli gałąź ma commity, których jeszcze nie ma w `main`. Duże `-D` usuwa bez sprawdzania, więc używaj go tylko wtedy, gdy masz pewność. Usuniętą gałąź da się odtworzyć z hasha jej ostatniego commita.
+- **Analogia z designu:** Usunięcie strony w Figmie dopiero po sprawdzeniu, że wszystkie jej ramki są przeniesione na główną stronę.
+- **Przykład:** `git branch -d fix/direction-after-instrument-change` → „Deleted branch … (was 3501582)”
 
 ### git log
 Pokazuje historię commitów: kto, kiedy, co i dlaczego zmienił.
@@ -135,6 +145,11 @@ Domyślna, główna gałąź repozytorium: „oficjalna” wersja projektu.
 Połączenie zmian z jednej gałęzi z inną.
 - **Analogia z designu:** Scalenie brancha z głównym plikiem w Figmie.
 - **Przykład:** `git merge nowy-pomysl`
+
+### Merge commit
+Commit scalający, czyli specjalny commit, który zapisuje moment połączenia dwóch gałęzi. GitHub tworzy go przy mergowaniu pull requesta; ma dwóch „rodziców”: ostatni commit `main` i ostatni commit gałęzi.
+- **Analogia z designu:** Wpis w historii wersji Figmy „Merged branch …”: znacznik, kiedy branch trafił do głównego pliku.
+- **Przykład:** `110fba0 Merge pull request #1 from Megi1982/fix/direction-after-instrument-change`
 
 ### origin
 Przyjęta nazwa głównego remote'u. To tylko etykieta dla długiego adresu.
