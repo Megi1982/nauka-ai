@@ -37,6 +37,11 @@ Program w terminalu, który wysyła zapytania HTTP i wyświetla odpowiedź. Przy
 - **Analogia z designu:** Jak testowanie pojedynczego komponentu w izolacji, zanim wstawisz go na ekran.
 - **Przykład:** `curl localhost:3000/api/instruments`
 
+### Heredoc
+Sposób na przekazanie całego bloku tekstu do polecenia bezpośrednio w terminalu, między znacznikiem początku i końca (często `EOF`). Gdy znacznik jest w cudzysłowie (`<<'EOF'`), shell kopiuje tekst dosłownie i nie traktuje znaków takich jak `$` czy backticki jako poleceń.
+- **Analogia z designu:** Jak wklejanie tekstu bez formatowania: trafia dokładnie tak, jak go napisano, nic po drodze go nie zmienia.
+- **Przykład:** `pbcopy <<'EOF'` … `EOF` przy kopiowaniu opisu pull requesta
+
 ### Home directory (~)
 Twój osobisty folder na komputerze (`/Users/<twoja-nazwa>`). Znak `~` to jego skrót.
 - **Analogia z designu:** Jak Twoje prywatne Drafts w Figmie: własne miejsce, oddzielone od innych.
@@ -46,6 +51,11 @@ Twój osobisty folder na komputerze (`/Users/<twoja-nazwa>`). Znak `~` to jego s
 Lista folderów, w których shell szuka programów, gdy wpisujesz polecenie. Jeśli programu nie ma w żadnym z nich, pojawia się błąd `command not found`.
 - **Analogia z designu:** Jak biblioteki włączone w pliku Figmy: możesz używać tylko komponentów z włączonych bibliotek.
 - **Przykład:** `echo $PATH`
+
+### pbcopy and pbpaste
+Polecenia macOS do obsługi schowka. **pbcopy** zapisuje tekst do schowka (jak Cmd + C), a **pbpaste** wypisuje to, co w nim jest (jak Cmd + V). Znak `<` podaje zawartość pliku na wejście polecenia.
+- **Analogia z designu:** Kopiuj i wklej, tylko z terminala zamiast z klawiatury.
+- **Przykład:** `pbcopy < pr-description.md` (kopiuje opis pull requesta); `pbpaste | head -1` (pokazuje jego pierwszą linię)
 
 ### Shell (bash, zsh)
 Program działający w terminalu, który odczytuje Twoje polecenia i je wykonuje. **zsh** to dziś domyślny shell w macOS, a **bash** to starszy, bardzo popularny. Większość poleceń działa w obu tak samo.
@@ -193,6 +203,11 @@ Para plików do bezpiecznego logowania bez hasła. **Klucz publiczny** przekazuj
 ---
 
 ## Dokumentacja
+
+### `<details>` (collapsible section)
+Zwijana sekcja, czyli znacznik HTML, który działa też w Markdownie na GitHubie. Ukrywa treść za jedną klikalną linijką (`<summary>`), a czytelnik rozwija ją tylko wtedy, gdy chce.
+- **Analogia z designu:** Jak zwinięta grupa warstw albo akordeon: treść jest, ale nie zajmuje miejsca, dopóki jej nie otworzysz.
+- **Przykład:** `<details><summary>🇵🇱 Wersja polska</summary>` … `</details>` w opisie pull requesta
 
 ### Frontmatter
 Blok ustawień na samej górze pliku Markdown, między dwiema liniami `---`. Programy czytają go jako konfigurację; nie jest wyświetlany jako część tekstu.

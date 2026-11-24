@@ -37,6 +37,11 @@ A terminal program that sends HTTP requests and prints the response. Useful for 
 - **Design analogy:** Like testing a single component in isolation before placing it on a screen.
 - **Example:** `curl localhost:3000/api/instruments`
 
+### Heredoc
+A way to pass a whole block of text to a command right in the terminal, between a start marker and an end marker (often `EOF`). With the marker in quotes (`<<'EOF'`), the shell copies the text literally and doesn't treat characters like `$` or backticks as instructions.
+- **Design analogy:** Like pasting text as plain text: it goes in exactly as written, with no formatting applied on the way.
+- **Example:** `pbcopy <<'EOF'` … `EOF` when copying the pull request description
+
 ### Home directory (~)
 Your personal folder on the computer (`/Users/<your-name>`). The `~` sign is its shortcut.
 - **Design analogy:** Like your personal Drafts space in Figma: your own place, separate from everyone else's.
@@ -46,6 +51,11 @@ Your personal folder on the computer (`/Users/<your-name>`). The `~` sign is its
 A list of folders where the shell looks for programs when you type a command. If a program isn't in any of them, you get the error `command not found`.
 - **Design analogy:** Like the libraries enabled in a Figma file: you can only use components from libraries that are switched on.
 - **Example:** `echo $PATH`
+
+### pbcopy and pbpaste
+macOS commands for the clipboard. **pbcopy** saves text to the clipboard (like Cmd + C), and **pbpaste** prints what's in it (like Cmd + V). The `<` sign feeds a file's contents into a command.
+- **Design analogy:** Copy and paste, but from the terminal instead of with the keyboard.
+- **Example:** `pbcopy < pr-description.md` (copies the pull request description); `pbpaste | head -1` (shows its first line)
 
 ### Shell (bash, zsh)
 The program running inside the terminal that reads your commands and executes them. **zsh** is the default shell on macOS today; **bash** is an older, very popular one. Most commands work the same in both.
@@ -193,6 +203,11 @@ A pair of files used to log in securely without a password. The **public key** i
 ---
 
 ## Documentation
+
+### `<details>` (collapsible section)
+An HTML tag that also works in Markdown on GitHub. It hides content behind one clickable line, the `<summary>`, and the reader expands it only if they want to.
+- **Design analogy:** Like a collapsed layer group or an accordion: the content is there, but it doesn't take up space until you open it.
+- **Example:** `<details><summary>🇵🇱 Wersja polska</summary>` … `</details>` in the pull request description
 
 ### Frontmatter
 A block of settings at the very top of a Markdown file, between two `---` lines. Programs read it as configuration; it isn't shown as part of the text.
