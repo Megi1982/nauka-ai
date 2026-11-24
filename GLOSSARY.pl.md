@@ -52,6 +52,11 @@ Program działający w terminalu, który odczytuje Twoje polecenia i je wykonuje
 - **Analogia z designu:** Terminal to okno, a shell to tłumacz za nim, który zamienia Twoje słowa na działania.
 - **Przykład:** `echo $SHELL` (pokazuje, jakiego shella używasz)
 
+### Syntax check (node --check)
+Sprawdzenie składni, czyli szybka kontrola, czy kod jest napisany „gramatycznie” poprawnie (zamknięte nawiasy, brak literówek w słowach kluczowych), bez uruchamiania go. Nie mówi, czy logika działa dobrze, tylko czy program w ogóle da się przeczytać.
+- **Analogia z designu:** Jak sprawdzanie pisowni: wyłapie literówki, ale nie powie, czy tekst ma sens.
+- **Przykład:** `node --check projects/deal-ticket/frontend/app.js`
+
 ### Terminal
 Aplikacja, w której pracujesz z komputerem za pomocą poleceń tekstowych zamiast klikania.
 - **Analogia z designu:** Jak wpisywanie dokładnych wartości w panelu właściwości zamiast przeciągania myszką: mniej wizualne, ale precyzyjniejsze i szybsze, gdy już się wprawisz.
@@ -315,6 +320,11 @@ Zależność, czyli cudzy, gotowy kod, z którego korzysta Twój projekt, np. bi
 - **Analogia z designu:** Biblioteka komponentów podpięta do pliku, zamiast rysowania każdego przycisku samodzielnie.
 - **Przykład:** `express` w demo deal ticket (jedyna zależność)
 
+### Disabled state
+Stan nieaktywny przycisku lub pola: nie reaguje na kliknięcia i jest wyszarzony. W HTML to atrybut `disabled`. Używa się go, gdy akcja jeszcze nie ma sensu, a etykieta powinna mówić, co zrobić, żeby ją odblokować.
+- **Analogia z designu:** Wariant disabled komponentu przycisku w design systemie.
+- **Przykład:** `<button type="submit" id="submit" class="submit" disabled>Choose Buy or Sell</button>` w `frontend/index.html`
+
 ### Endpoint
 Jeden konkretny adres w API razem z metodą HTTP, np. `GET /api/instruments`. Każdy endpoint robi jedną rzecz.
 - **Analogia z designu:** Jedna pozycja w menu.
@@ -400,6 +410,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 - **Analogia z designu:** Jak biblioteka pluginów w Figma Community, z menedżerem, który instaluje dokładnie te wersje, których potrzebujesz.
 - **Przykład:** `npm install` / `npm start`
 
+### null
+Specjalna wartość oznaczająca „celowo pusto, nic nie wybrano”. To coś innego niż wartość domyślna: `null` mówi otwarcie, że decyzja jeszcze nie zapadła, zamiast podejmować ją za użytkownika.
+- **Analogia z designu:** Radio group bez domyślnie zaznaczonej opcji, żeby użytkownik wybrał świadomie.
+- **Przykład:** `side: null` w `state` w `frontend/app.js` (brak kierunku, dopóki użytkownik nie wybierze Buy albo Sell)
+
 ### package.json and package-lock.json
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
 - **Analogia z designu:** package.json to lista bibliotek, z których korzysta plik, a package-lock.json przypina ich dokładne wersje.
@@ -409,6 +424,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 Czysta funkcja, czyli funkcja, która tylko przyjmuje dane i zwraca wynik. Nie czyta plików, nie wie nic o HTTP i niczego nie zmienia poza sobą, więc te same dane wejściowe zawsze dają ten sam wynik. Dzięki temu łatwo ją testować i używać ponownie.
 - **Analogia z designu:** Jak komponent w design systemie: te same propsy zawsze dają ten sam wygląd, gdziekolwiek go wstawisz.
 - **Przykład:** `calculateTradeDefault(instrument, trades, price)` w `backend/tradeDefault.js`
+
+### Regression
+Regresja, czyli błąd polegający na tym, że coś, co wcześniej działało, przestaje działać po zmianie. **Test regresji** sprawdza po poprawce, czy reszta aplikacji nadal działa, a nie tylko naprawiony fragment.
+- **Analogia z designu:** Poprawiasz odstępy w jednym komponencie, a psuje się layout na trzech ekranach, które go używają.
+- **Przykład:** Po poprawce kierunku złożenie zlecenia, żeby sprawdzić, czy nadal jest akceptowane.
 
 ### Request and response
 Zapytanie i odpowiedź. **Request** to wiadomość, którą frontend (albo curl) wysyła do serwera: adres, metoda HTTP i czasem dane. **Response** to to, co serwer odsyła: kod statusu i zwykle dane w formacie JSON. Każda interakcja z API to jeden request i jedna odpowiedź.

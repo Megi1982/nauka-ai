@@ -52,6 +52,11 @@ The program running inside the terminal that reads your commands and executes th
 - **Design analogy:** The terminal is the window, the shell is the interpreter behind it, like a translator who turns your words into actions.
 - **Example:** `echo $SHELL` (shows which shell you're using)
 
+### Syntax check (node --check)
+A quick check that the code is written "grammatically" correctly (closed brackets, no typos in keywords), without running it. It doesn't tell you whether the logic is right, only that the program can be read at all.
+- **Design analogy:** Like a spell check: it catches typos, but it won't tell you whether the copy makes sense.
+- **Example:** `node --check projects/deal-ticket/frontend/app.js`
+
 ### Terminal
 An app where you work with your computer through text commands instead of clicking.
 - **Design analogy:** Like setting exact values in the properties panel instead of dragging with the mouse: less visual, but more precise and faster once you know it.
@@ -315,6 +320,11 @@ Someone else's ready-made code that your project uses, e.g. a library. Listed in
 - **Design analogy:** A component library you link to your file instead of drawing every button yourself.
 - **Example:** `express` in the deal ticket demo (its only dependency)
 
+### Disabled state
+A state of a button or field in which it can't be used: it doesn't react to clicks and looks muted. In HTML it's the `disabled` attribute. It's used when an action doesn't make sense yet, and the label should say what to do to unlock it.
+- **Design analogy:** The disabled variant of a button component in a design system.
+- **Example:** `<button type="submit" id="submit" class="submit" disabled>Choose Buy or Sell</button>` in `frontend/index.html`
+
 ### Endpoint
 One specific address in an API, together with its HTTP method, e.g. `GET /api/instruments`. Each endpoint does one job.
 - **Design analogy:** One item on the menu.
@@ -400,6 +410,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 - **Design analogy:** Like the Figma Community plugin library, with a manager that installs exactly the versions you need.
 - **Example:** `npm install` / `npm start`
 
+### null
+A special value meaning "deliberately empty, nothing chosen". It's different from a default value: `null` says openly that no decision has been made yet, instead of making one on the user's behalf.
+- **Design analogy:** A radio group with no option preselected, so the user has to choose consciously.
+- **Example:** `side: null` in `state` in `frontend/app.js` (no direction until the user picks Buy or Sell)
+
 ### package.json and package-lock.json
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
 - **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
@@ -409,6 +424,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 A function that only takes data in and gives a result back. It doesn't read files, doesn't know about HTTP and changes nothing outside itself, so the same inputs always give the same result. That makes it easy to test and to reuse.
 - **Design analogy:** Like a component in a design system: the same props always give the same look, wherever you place it.
 - **Example:** `calculateTradeDefault(instrument, trades, price)` in `backend/tradeDefault.js`
+
+### Regression
+A bug where something that used to work stops working after a change. A **regression test** checks, after a fix, that the rest of the app still works, not only the fixed part.
+- **Design analogy:** You fix the spacing in one component, and it breaks the layout on three screens that use it.
+- **Example:** After the direction fix, placing an order to check it is still accepted.
 
 ### Request and response
 A **request** is a message the frontend (or curl) sends to the server: an address, an HTTP method and sometimes data. A **response** is what the server sends back: a status code and usually data in JSON. Every interaction with an API is one request and one response.
