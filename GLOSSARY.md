@@ -37,6 +37,11 @@ A terminal program that sends HTTP requests and prints the response. Useful for 
 - **Design analogy:** Like testing a single component in isolation before placing it on a screen.
 - **Example:** `curl localhost:3000/api/instruments`
 
+### Heredoc
+A way to pass a whole block of text to a command right in the terminal, between a start marker and an end marker (often `EOF`). With the marker in quotes (`<<'EOF'`), the shell copies the text literally and doesn't treat characters like `$` or backticks as instructions.
+- **Design analogy:** Like pasting text as plain text: it goes in exactly as written, with no formatting applied on the way.
+- **Example:** `pbcopy <<'EOF'` … `EOF` when copying the pull request description
+
 ### Home directory (~)
 Your personal folder on the computer (`/Users/<your-name>`). The `~` sign is its shortcut.
 - **Design analogy:** Like your personal Drafts space in Figma: your own place, separate from everyone else's.
@@ -47,10 +52,20 @@ A list of folders where the shell looks for programs when you type a command. If
 - **Design analogy:** Like the libraries enabled in a Figma file: you can only use components from libraries that are switched on.
 - **Example:** `echo $PATH`
 
+### pbcopy and pbpaste
+macOS commands for the clipboard. **pbcopy** saves text to the clipboard (like Cmd + C), and **pbpaste** prints what's in it (like Cmd + V). The `<` sign feeds a file's contents into a command.
+- **Design analogy:** Copy and paste, but from the terminal instead of with the keyboard.
+- **Example:** `pbcopy < pr-description.md` (copies the pull request description); `pbpaste | head -1` (shows its first line)
+
 ### Shell (bash, zsh)
 The program running inside the terminal that reads your commands and executes them. **zsh** is the default shell on macOS today; **bash** is an older, very popular one. Most commands work the same in both.
 - **Design analogy:** The terminal is the window, the shell is the interpreter behind it, like a translator who turns your words into actions.
 - **Example:** `echo $SHELL` (shows which shell you're using)
+
+### Syntax check (node --check)
+A quick check that the code is written "grammatically" correctly (closed brackets, no typos in keywords), without running it. It doesn't tell you whether the logic is right, only that the program can be read at all.
+- **Design analogy:** Like a spell check: it catches typos, but it won't tell you whether the copy makes sense.
+- **Example:** `node --check projects/deal-ticket/frontend/app.js`
 
 ### Terminal
 An app where you work with your computer through text commands instead of clicking.
@@ -189,6 +204,11 @@ A pair of files used to log in securely without a password. The **public key** i
 
 ## Documentation
 
+### `<details>` (collapsible section)
+An HTML tag that also works in Markdown on GitHub. It hides content behind one clickable line, the `<summary>`, and the reader expands it only if they want to.
+- **Design analogy:** Like a collapsed layer group or an accordion: the content is there, but it doesn't take up space until you open it.
+- **Example:** `<details><summary>🇵🇱 Wersja polska</summary>` … `</details>` in the pull request description
+
 ### Frontmatter
 A block of settings at the very top of a Markdown file, between two `---` lines. Programs read it as configuration; it isn't shown as part of the text.
 - **Design analogy:** Like layer properties in Figma: invisible on the canvas, but they decide how the element behaves.
@@ -315,6 +335,11 @@ Someone else's ready-made code that your project uses, e.g. a library. Listed in
 - **Design analogy:** A component library you link to your file instead of drawing every button yourself.
 - **Example:** `express` in the deal ticket demo (its only dependency)
 
+### Disabled state
+A state of a button or field in which it can't be used: it doesn't react to clicks and looks muted. In HTML it's the `disabled` attribute. It's used when an action doesn't make sense yet, and the label should say what to do to unlock it.
+- **Design analogy:** The disabled variant of a button component in a design system.
+- **Example:** `<button type="submit" id="submit" class="submit" disabled>Choose Buy or Sell</button>` in `frontend/index.html`
+
 ### Endpoint
 One specific address in an API, together with its HTTP method, e.g. `GET /api/instruments`. Each endpoint does one job.
 - **Design analogy:** One item on the menu.
@@ -400,6 +425,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 - **Design analogy:** Like the Figma Community plugin library, with a manager that installs exactly the versions you need.
 - **Example:** `npm install` / `npm start`
 
+### null
+A special value meaning "deliberately empty, nothing chosen". It's different from a default value: `null` says openly that no decision has been made yet, instead of making one on the user's behalf.
+- **Design analogy:** A radio group with no option preselected, so the user has to choose consciously.
+- **Example:** `side: null` in `state` in `frontend/app.js` (no direction until the user picks Buy or Sell)
+
 ### package.json and package-lock.json
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
 - **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
@@ -409,6 +439,11 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 A function that only takes data in and gives a result back. It doesn't read files, doesn't know about HTTP and changes nothing outside itself, so the same inputs always give the same result. That makes it easy to test and to reuse.
 - **Design analogy:** Like a component in a design system: the same props always give the same look, wherever you place it.
 - **Example:** `calculateTradeDefault(instrument, trades, price)` in `backend/tradeDefault.js`
+
+### Regression
+A bug where something that used to work stops working after a change. A **regression test** checks, after a fix, that the rest of the app still works, not only the fixed part.
+- **Design analogy:** You fix the spacing in one component, and it breaks the layout on three screens that use it.
+- **Example:** After the direction fix, placing an order to check it is still accepted.
 
 ### Request and response
 A **request** is a message the frontend (or curl) sends to the server: an address, an HTTP method and sometimes data. A **response** is what the server sends back: a status code and usually data in JSON. Every interaction with an API is one request and one response.
@@ -448,6 +483,11 @@ The unit of position size. A standard lot in forex is 100,000 units of the base 
 The standard unit for small price moves. For most currency pairs it's the 4th decimal place (0.0001); for pairs with the Japanese yen it's the 2nd (0.01). For gold, brokers use different conventions; the demo uses 0.1. Stop loss and take profit distances are usually given in pips, because a number like "20 pips" means the same thing whatever the price.
 - **Design analogy:** Like a nudge step in Figma (1 px or 10 px with Shift): a fixed unit of movement that makes distances easy to compare.
 - **Example:** `"pipSize": 0.0001` for EUR/USD in `data/instruments.json`; `tradeDefault.js` multiplies `stopLossPips × pipSize` to turn pips into a price.
+
+### Slippage
+The difference between the price you saw on screen when you placed the order and the price at which the server actually accepted it. It happens because the price keeps moving between the moment you click and the moment the order is executed. Slippage can work against you or in your favour.
+- **Design analogy:** Like a handoff where the developer builds from a newer version of the file than the one you reviewed: what you saw and what you got differ slightly, because things changed in between.
+- **Example:** The deal ticket shows an ask of 1.08588 for EUR/USD, but the order is accepted at 1.08594 (0.6 pip worse). The screen refreshes prices every 2 seconds, while `server.js` uses its own current price as `entryPrice`.
 
 ### Spread
 The difference between the ask and the bid price. It's the hidden cost of every trade: when you buy and sell immediately, you lose the spread.

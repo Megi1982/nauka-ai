@@ -102,7 +102,9 @@ select:focus, input:focus { outline: none; border-color: var(--accent); }
 }
 .submit.buy { background: var(--buy); color: #04140c; }
 .submit.sell { background: var(--sell); color: #fff; }
-.submit:disabled { opacity: 0.6; cursor: wait; }
+.submit:not(.buy):not(.sell) { background: var(--surface-2); color: var(--muted); }
+.submit:disabled { opacity: 0.6; cursor: not-allowed; }
+.submit.is-sending { cursor: wait; }
 
 .message { min-height: 1.4em; margin: 0 0 12px; font-size: 13px; }
 .message.error { color: var(--sell); }

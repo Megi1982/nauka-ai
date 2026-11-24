@@ -37,6 +37,11 @@ Program w terminalu, który wysyła zapytania HTTP i wyświetla odpowiedź. Przy
 - **Analogia z designu:** Jak testowanie pojedynczego komponentu w izolacji, zanim wstawisz go na ekran.
 - **Przykład:** `curl localhost:3000/api/instruments`
 
+### Heredoc
+Sposób na przekazanie całego bloku tekstu do polecenia bezpośrednio w terminalu, między znacznikiem początku i końca (często `EOF`). Gdy znacznik jest w cudzysłowie (`<<'EOF'`), shell kopiuje tekst dosłownie i nie traktuje znaków takich jak `$` czy backticki jako poleceń.
+- **Analogia z designu:** Jak wklejanie tekstu bez formatowania: trafia dokładnie tak, jak go napisano, nic po drodze go nie zmienia.
+- **Przykład:** `pbcopy <<'EOF'` … `EOF` przy kopiowaniu opisu pull requesta
+
 ### Home directory (~)
 Twój osobisty folder na komputerze (`/Users/<twoja-nazwa>`). Znak `~` to jego skrót.
 - **Analogia z designu:** Jak Twoje prywatne Drafts w Figmie: własne miejsce, oddzielone od innych.
@@ -47,10 +52,20 @@ Lista folderów, w których shell szuka programów, gdy wpisujesz polecenie. Je�
 - **Analogia z designu:** Jak biblioteki włączone w pliku Figmy: możesz używać tylko komponentów z włączonych bibliotek.
 - **Przykład:** `echo $PATH`
 
+### pbcopy and pbpaste
+Polecenia macOS do obsługi schowka. **pbcopy** zapisuje tekst do schowka (jak Cmd + C), a **pbpaste** wypisuje to, co w nim jest (jak Cmd + V). Znak `<` podaje zawartość pliku na wejście polecenia.
+- **Analogia z designu:** Kopiuj i wklej, tylko z terminala zamiast z klawiatury.
+- **Przykład:** `pbcopy < pr-description.md` (kopiuje opis pull requesta); `pbpaste | head -1` (pokazuje jego pierwszą linię)
+
 ### Shell (bash, zsh)
 Program działający w terminalu, który odczytuje Twoje polecenia i je wykonuje. **zsh** to dziś domyślny shell w macOS, a **bash** to starszy, bardzo popularny. Większość poleceń działa w obu tak samo.
 - **Analogia z designu:** Terminal to okno, a shell to tłumacz za nim, który zamienia Twoje słowa na działania.
 - **Przykład:** `echo $SHELL` (pokazuje, jakiego shella używasz)
+
+### Syntax check (node --check)
+Sprawdzenie składni, czyli szybka kontrola, czy kod jest napisany „gramatycznie” poprawnie (zamknięte nawiasy, brak literówek w słowach kluczowych), bez uruchamiania go. Nie mówi, czy logika działa dobrze, tylko czy program w ogóle da się przeczytać.
+- **Analogia z designu:** Jak sprawdzanie pisowni: wyłapie literówki, ale nie powie, czy tekst ma sens.
+- **Przykład:** `node --check projects/deal-ticket/frontend/app.js`
 
 ### Terminal
 Aplikacja, w której pracujesz z komputerem za pomocą poleceń tekstowych zamiast klikania.
@@ -189,6 +204,11 @@ Para plików do bezpiecznego logowania bez hasła. **Klucz publiczny** przekazuj
 
 ## Dokumentacja
 
+### `<details>` (collapsible section)
+Zwijana sekcja, czyli znacznik HTML, który działa też w Markdownie na GitHubie. Ukrywa treść za jedną klikalną linijką (`<summary>`), a czytelnik rozwija ją tylko wtedy, gdy chce.
+- **Analogia z designu:** Jak zwinięta grupa warstw albo akordeon: treść jest, ale nie zajmuje miejsca, dopóki jej nie otworzysz.
+- **Przykład:** `<details><summary>🇵🇱 Wersja polska</summary>` … `</details>` w opisie pull requesta
+
 ### Frontmatter
 Blok ustawień na samej górze pliku Markdown, między dwiema liniami `---`. Programy czytają go jako konfigurację; nie jest wyświetlany jako część tekstu.
 - **Analogia z designu:** Jak właściwości warstwy w Figmie: niewidoczne na canvasie, ale decydują, jak element się zachowuje.
@@ -315,6 +335,11 @@ Zależność, czyli cudzy, gotowy kod, z którego korzysta Twój projekt, np. bi
 - **Analogia z designu:** Biblioteka komponentów podpięta do pliku, zamiast rysowania każdego przycisku samodzielnie.
 - **Przykład:** `express` w demo deal ticket (jedyna zależność)
 
+### Disabled state
+Stan nieaktywny przycisku lub pola: nie reaguje na kliknięcia i jest wyszarzony. W HTML to atrybut `disabled`. Używa się go, gdy akcja jeszcze nie ma sensu, a etykieta powinna mówić, co zrobić, żeby ją odblokować.
+- **Analogia z designu:** Wariant disabled komponentu przycisku w design systemie.
+- **Przykład:** `<button type="submit" id="submit" class="submit" disabled>Choose Buy or Sell</button>` w `frontend/index.html`
+
 ### Endpoint
 Jeden konkretny adres w API razem z metodą HTTP, np. `GET /api/instruments`. Każdy endpoint robi jedną rzecz.
 - **Analogia z designu:** Jedna pozycja w menu.
@@ -400,6 +425,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 - **Analogia z designu:** Jak biblioteka pluginów w Figma Community, z menedżerem, który instaluje dokładnie te wersje, których potrzebujesz.
 - **Przykład:** `npm install` / `npm start`
 
+### null
+Specjalna wartość oznaczająca „celowo pusto, nic nie wybrano”. To coś innego niż wartość domyślna: `null` mówi otwarcie, że decyzja jeszcze nie zapadła, zamiast podejmować ją za użytkownika.
+- **Analogia z designu:** Radio group bez domyślnie zaznaczonej opcji, żeby użytkownik wybrał świadomie.
+- **Przykład:** `side: null` w `state` w `frontend/app.js` (brak kierunku, dopóki użytkownik nie wybierze Buy albo Sell)
+
 ### package.json and package-lock.json
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
 - **Analogia z designu:** package.json to lista bibliotek, z których korzysta plik, a package-lock.json przypina ich dokładne wersje.
@@ -409,6 +439,11 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 Czysta funkcja, czyli funkcja, która tylko przyjmuje dane i zwraca wynik. Nie czyta plików, nie wie nic o HTTP i niczego nie zmienia poza sobą, więc te same dane wejściowe zawsze dają ten sam wynik. Dzięki temu łatwo ją testować i używać ponownie.
 - **Analogia z designu:** Jak komponent w design systemie: te same propsy zawsze dają ten sam wygląd, gdziekolwiek go wstawisz.
 - **Przykład:** `calculateTradeDefault(instrument, trades, price)` w `backend/tradeDefault.js`
+
+### Regression
+Regresja, czyli błąd polegający na tym, że coś, co wcześniej działało, przestaje działać po zmianie. **Test regresji** sprawdza po poprawce, czy reszta aplikacji nadal działa, a nie tylko naprawiony fragment.
+- **Analogia z designu:** Poprawiasz odstępy w jednym komponencie, a psuje się layout na trzech ekranach, które go używają.
+- **Przykład:** Po poprawce kierunku złożenie zlecenia, żeby sprawdzić, czy nadal jest akceptowane.
 
 ### Request and response
 Zapytanie i odpowiedź. **Request** to wiadomość, którą frontend (albo curl) wysyła do serwera: adres, metoda HTTP i czasem dane. **Response** to to, co serwer odsyła: kod statusu i zwykle dane w formacie JSON. Każda interakcja z API to jeden request i jedna odpowiedź.
@@ -448,6 +483,11 @@ Jednostka wielkości pozycji. Standardowy lot na rynku walutowym to 100 000 jedn
 Standardowa jednostka małych ruchów ceny. Dla większości par walutowych to 4. miejsce po przecinku (0.0001), a dla par z jenem japońskim 2. miejsce (0.01). Dla złota brokerzy stosują różne konwencje; w demo to 0.1. Odległości stop lossa i take profitu podaje się zwykle w pipsach, bo „20 pipsów” znaczy to samo niezależnie od wysokości ceny.
 - **Analogia z designu:** Jak krok przesuwania strzałkami w Figmie (1 px albo 10 px z Shiftem): stała jednostka ruchu, dzięki której łatwo porównać odległości.
 - **Przykład:** `"pipSize": 0.0001` dla EUR/USD w `data/instruments.json`; `tradeDefault.js` mnoży `stopLossPips × pipSize`, żeby zamienić pipsy na cenę.
+
+### Slippage
+Poślizg cenowy, czyli różnica między ceną widzianą na ekranie w chwili składania zlecenia a ceną, po której serwer faktycznie je przyjął. Powstaje, bo cena zmienia się między kliknięciem a wykonaniem zlecenia. Poślizg może działać na Twoją niekorzyść albo na korzyść.
+- **Analogia z designu:** Jak handoff, przy którym developer buduje z nowszej wersji pliku niż ta, którą zatwierdziłaś: to, co widziałaś, i to, co dostałaś, trochę się różni, bo w międzyczasie coś się zmieniło.
+- **Przykład:** Deal ticket pokazuje dla EUR/USD ask 1.08588, a zlecenie zostaje przyjęte po 1.08594 (o 0.6 pipsa gorzej). Ekran odświeża ceny co 2 sekundy, a `server.js` bierze jako `entryPrice` swoją aktualną cenę.
 
 ### Spread
 Różnica między ceną ask a ceną bid. To ukryty koszt każdej transakcji: jeśli kupisz i od razu sprzedasz, tracisz właśnie spread.

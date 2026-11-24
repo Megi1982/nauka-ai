@@ -3,7 +3,7 @@
 
 const state = {
   instruments: [],
-  side: 'buy',
+  side: null, // no direction until the user picks one (or applies the suggestion)
   suggestion: null,
 };
 
@@ -56,6 +56,7 @@ function renderPrices() {
   els.ask.textContent = inst.ask.toFixed(inst.decimals);
 }
 
+// side is 'buy', 'sell' or null (nothing chosen yet). With null the order button is disabled.
 function setSide(side) {
   state.side = side;
   document.querySelectorAll('.side').forEach((btn) => {
@@ -63,7 +64,14 @@ function setSide(side) {
     btn.classList.toggle('is-active', active);
     btn.setAttribute('aria-checked', String(active));
   });
+  if (!side) {
+    els.submit.className = 'submit';
+    els.submit.disabled = true;
+    els.submit.textContent = 'Choose Buy or Sell';
+    return;
+  }
   els.submit.className = `submit ${side}`;
+  els.submit.disabled = false;
   els.submit.textContent = `Place ${side === 'buy' ? 'Buy' : 'Sell'} order`;
 }
 
@@ -99,11 +107,13 @@ function showMessage(text, type) {
 }
 
 // Values typed or applied for one instrument make no sense for another (e.g. Gold SL 2313 vs GBP/USD ~1.27).
-// Clear them; the new suggestion waits in the drawer until the user clicks "Apply to ticket".
+// Clear them, including the direction: a Buy chosen for Gold must not silently carry over to GBP/USD.
+// The new suggestion waits in the drawer until the user clicks "Apply to ticket".
 function clearTicketFields() {
   els.size.value = '';
   els.stopLoss.value = '';
   els.takeProfit.value = '';
+  setSide(null);
 }
 
 // ---------- Actions ----------
@@ -148,6 +158,7 @@ function validate(order, inst) {
 
 async function onSubmit(event) {
   event.preventDefault();
+  if (!state.side) return showMessage('Choose Buy or Sell first.', 'error');
   const inst = currentInstrument();
   const toNumber = (input) => (input.value === '' ? null : Number(input.value));
   const order = {
@@ -162,8 +173,10 @@ async function onSubmit(event) {
   if (error) return showMessage(error, 'error');
 
   els.submit.disabled = true;
+  els.submit.classList.add('is-sending');
   const { ok, body } = await postOrder(order);
   els.submit.disabled = false;
+  els.submit.classList.remove('is-sending');
 
   if (ok) {
     showMessage(`Order ${body.id} accepted at ${body.entryPrice}. (Saved to orders.json, not a real trade.)`, 'success');
