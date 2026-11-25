@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-25
+
+### Czego się nauczyłam
+Że testy Continuous Integration są automatycznie przeprowadzane na GitHubie i odpalane każdorazowo, gdy jakiś dev wyśle pull requesta. Pomaga to chronić main, podczas gdy zespół wspólnie pracuje nad kodem, zabezpieczając go. Dodatkowo dobrze zrobić specyfikę przypadków, jakie chcemy pokryć testami: muszą to być konkretne reguły.
+
+### Co było trudne
+Jak zwykle dużo linijek kodu. Nie jestem w stanie takiej ilości przeczytać i przetworzyć.
+
+### Pytanie na jutro
+Aby zrobić sprawdzian z wiedzy dzisiejszej o testach.
+
+---
+
 ## 2026-11-24
 
 ### Czego się nauczyłam

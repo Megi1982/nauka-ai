@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-25
+
+### What I learned
+That Continuous Integration tests run automatically on GitHub and are triggered every time a dev opens a pull request. This helps protect main while the team works on the code together, keeping it safe. It's also good to write down a specification of the cases we want to cover with tests: they have to be concrete rules.
+
+### What was difficult
+As usual, a lot of lines of code. I can't read and process that much.
+
+### Question for tomorrow
+To do a quiz on what I learned about tests today.
+
+---
+
 ## 2026-11-24
 
 ### What I learned

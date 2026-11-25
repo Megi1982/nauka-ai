@@ -225,6 +225,11 @@ A proposal on GitHub to merge changes from your branch into another one (usually
 - **Design analogy:** Presenting a design branch for review before merging it into the main file.
 - **Example:** `gh pr create` (using the GitHub CLI tool)
 
+### Squash and merge
+One of the ways to merge a pull request on GitHub: all the commits from the branch are combined into a single commit on `main`. History stays short and clean, but the individual steps are no longer visible in `main`. A regular **merge** keeps every commit plus a merge commit.
+- **Design analogy:** Like flattening a layer group into one layer: the result looks the same, but the separate steps are gone.
+- **Example:** The arrow next to the "Merge pull request" button → "Squash and merge"
+
 ### SSH key (public and private)
 A pair of files used to log in securely without a password. The **public key** is shared with GitHub; the **private key** stays on your computer and must never be shared.
 - **Design analogy:** An office access card: the reader (GitHub) knows your card, and the card itself (private key) stays with you.
@@ -524,6 +529,11 @@ A program that waits for requests and answers them. During development it runs o
 What the application "remembers" right now: what's selected, what was fetched, what's shown. The screen is drawn from the state. A common bug is state that isn't reset when the context changes, such as old form values after switching the instrument.
 - **Design analogy:** The current variant and properties of a component: change them and the component looks different.
 - **Example:** `const state = { instruments: [], side: 'buy', suggestion: null };` in `frontend/app.js`
+
+### Test case and edge case
+A **test case** is one concrete rule to check: given this input, expect that result. An **edge case** is a situation at the edges of what's normal, such as no data, a single extreme value or an empty list. Edge cases matter most, because that's where a good and a bad implementation give different results.
+- **Design analogy:** Testing a component with the longest label, an empty state and an error, not only with the ideal data from the mockup.
+- **Example:** "USD/JPY has no history → no suggestion" and "one 3.0 lot trade doesn't change the median" in `test/tradeDefault.test.js`
 
 ### Test runner (node:test)
 A program that finds test files, runs them and reports what passed and what failed. Node.js has one built in (`node:test`), so no extra dependency is needed. `node --test` automatically looks for files such as `*.test.js` or anything in a `test/` folder.

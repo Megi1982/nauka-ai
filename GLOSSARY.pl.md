@@ -225,6 +225,11 @@ Propozycja na GitHubie, żeby połączyć zmiany z Twojej gałęzi z inną (zwyk
 - **Analogia z designu:** Pokazanie brancha do review, zanim scalisz go z głównym plikiem.
 - **Przykład:** `gh pr create` (za pomocą narzędzia GitHub CLI)
 
+### Squash and merge
+Jeden ze sposobów scalania pull requesta na GitHubie: wszystkie commity z gałęzi zostają połączone w jeden commit na `main`. Historia jest krótka i czytelna, ale poszczególnych kroków nie widać już w `main`. Zwykły **merge** zachowuje każdy commit i dodaje merge commit.
+- **Analogia z designu:** Jak spłaszczenie grupy warstw do jednej warstwy: wynik wygląda tak samo, ale osobnych kroków już nie ma.
+- **Przykład:** Strzałka obok przycisku „Merge pull request” → „Squash and merge”
+
 ### SSH key (public and private)
 Para plików do bezpiecznego logowania bez hasła. **Klucz publiczny** przekazujesz GitHubowi, a **klucz prywatny** zostaje na Twoim komputerze i nigdy nie wolno go nikomu udostępniać.
 - **Analogia z designu:** Karta dostępu do biura: czytnik (GitHub) zna Twoją kartę, a sama karta (klucz prywatny) zostaje u Ciebie.
@@ -524,6 +529,11 @@ Serwer, czyli program, który czeka na zapytania i na nie odpowiada. Podczas pra
 Stan, czyli to, co aplikacja „pamięta” w danej chwili: co jest wybrane, co zostało pobrane, co jest pokazane. Ekran rysuje się na podstawie stanu. Częsty błąd to stan, którego nie wyczyszczono po zmianie kontekstu, np. stare wartości w formularzu po przełączeniu instrumentu.
 - **Analogia z designu:** Aktualny wariant i właściwości komponentu: zmieniasz je i komponent wygląda inaczej.
 - **Przykład:** `const state = { instruments: [], side: 'buy', suggestion: null };` w `frontend/app.js`
+
+### Test case and edge case
+**Przypadek testowy** (test case) to jedna konkretna reguła do sprawdzenia: dla takich danych oczekuję takiego wyniku. **Przypadek brzegowy** (edge case) to sytuacja na granicy normalności, np. brak danych, jedna skrajna wartość albo pusta lista. To one są najważniejsze, bo właśnie w nich dobra i zła implementacja dają różne wyniki.
+- **Analogia z designu:** Testowanie komponentu z najdłuższą etykietą, pustym stanem i błędem, a nie tylko z idealnymi danymi z makiety.
+- **Przykład:** „USD/JPY nie ma historii → brak sugestii” i „jedna transakcja na 3.0 lota nie zmienia mediany” w `test/tradeDefault.test.js`
 
 ### Test runner (node:test)
 Program, który znajduje pliki z testami, uruchamia je i raportuje, co przeszło, a co nie. Node.js ma taki wbudowany (`node:test`), więc nie trzeba dodawać żadnej zależności. `node --test` sam szuka plików typu `*.test.js` albo wszystkiego w folderze `test/`.
