@@ -126,6 +126,11 @@ Shows the commit history: who changed what, when, and why.
 - **Design analogy:** The version history panel in Figma.
 - **Example:** `git log --oneline`
 
+### git revert
+Undoes a commit by adding a **new** commit that does the exact opposite. The original commit stays in history. That's the safe way to undo something that's already been pushed. The alternative, deleting a commit (`git reset` followed by `git push --force`), rewrites history: it can break other people's copies of the branch and erases the record of what happened.
+- **Design analogy:** Like saving a new version "restored previous look" in Figma's version history, instead of erasing versions from the history.
+- **Example:** `git revert 3d6e6a0` (undo the deliberate median bug from the CI experiment)
+
 ### git status
 Shows the current state of the repository: which branch you're on, which files have changed and which are staged.
 - **Design analogy:** A quick look at the file's status before handoff: what's done and what's still in progress.

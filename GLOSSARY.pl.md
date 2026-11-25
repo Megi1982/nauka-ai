@@ -126,6 +126,11 @@ Pokazuje historię commitów: kto, kiedy, co i dlaczego zmienił.
 - **Analogia z designu:** Panel historii wersji w Figmie.
 - **Przykład:** `git log --oneline`
 
+### git revert
+Cofa commit przez dodanie **nowego** commita, który robi dokładnie odwrotność. Pierwotny commit zostaje w historii. To bezpieczny sposób cofania czegoś, co już zostało wysłane na GitHuba. Alternatywa, czyli usunięcie commita (`git reset`, a potem `git push --force`), przepisuje historię: może popsuć kopie gałęzi u innych osób i wymazuje ślad tego, co się stało.
+- **Analogia z designu:** Jak zapisanie w historii wersji Figmy nowej wersji „przywrócono poprzedni wygląd” zamiast wymazywania wersji z historii.
+- **Przykład:** `git revert 3d6e6a0` (cofnięcie celowego błędu w medianie z eksperymentu z CI)
+
 ### git status
 Pokazuje bieżący stan repozytorium: na jakiej gałęzi jesteś, które pliki się zmieniły i które są w stagingu.
 - **Analogia z designu:** Szybki rzut oka na status pliku przed handoffem: co jest gotowe, a co jeszcze w toku.
