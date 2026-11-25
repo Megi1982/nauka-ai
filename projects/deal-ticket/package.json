@@ -5,7 +5,8 @@
   "private": true,
   "main": "backend/server.js",
   "scripts": {
-    "start": "node backend/server.js"
+    "start": "node backend/server.js",
+    "test": "node --test"
   },
   "license": "UNLICENSED",
   "dependencies": {

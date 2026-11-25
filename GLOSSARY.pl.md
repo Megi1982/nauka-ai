@@ -126,6 +126,11 @@ Pokazuje historię commitów: kto, kiedy, co i dlaczego zmienił.
 - **Analogia z designu:** Panel historii wersji w Figmie.
 - **Przykład:** `git log --oneline`
 
+### git revert
+Cofa commit przez dodanie **nowego** commita, który robi dokładnie odwrotność. Pierwotny commit zostaje w historii. To bezpieczny sposób cofania czegoś, co już zostało wysłane na GitHuba. Alternatywa, czyli usunięcie commita (`git reset`, a potem `git push --force`), przepisuje historię: może popsuć kopie gałęzi u innych osób i wymazuje ślad tego, co się stało.
+- **Analogia z designu:** Jak zapisanie w historii wersji Figmy nowej wersji „przywrócono poprzedni wygląd” zamiast wymazywania wersji z historii.
+- **Przykład:** `git revert 3d6e6a0` (cofnięcie celowego błędu w medianie z eksperymentu z CI)
+
 ### git status
 Pokazuje bieżący stan repozytorium: na jakiej gałęzi jesteś, które pliki się zmieniły i które są w stagingu.
 - **Analogia z designu:** Szybki rzut oka na status pliku przed handoffem: co jest gotowe, a co jeszcze w toku.
@@ -190,6 +195,11 @@ Zgłoszenie błędu, czyli opis, który pozwala komuś innemu błąd odtworzyć 
 - **Analogia z designu:** Jak dobra notatka z testu użyteczności: co zrobił użytkownik, co się stało, co powinno się stać i dlaczego to ważne.
 - **Przykład:** „Po zmianie instrumentu w formularzu zostają stare wartości stop loss i take profit” w demo deal ticket.
 
+### CI (Continuous Integration)
+Ciągła integracja, czyli zasada, że każda zmiana jest automatycznie sprawdzana, zanim trafi do głównej wersji: przy każdym pushu i pull requeście komputer uruchamia testy. PR dostaje zielony znaczek albo czerwony krzyżyk, więc problemy wychodzą przed połączeniem zmian, a nie po.
+- **Analogia z designu:** Jak automatyczne design review, które odbywa się przy każdej zmianie w design systemie, zanim zostanie opublikowana w bibliotece.
+- **Przykład:** Sprawdzenie „Tests” przy pull requeście w tym repozytorium
+
 ### Code review
 Inna osoba czyta Twoje zmiany, zanim zostaną połączone z gałęzią główną, komentuje je i proponuje poprawki.
 - **Analogia z designu:** Design critique albo design review.
@@ -205,6 +215,11 @@ Serwis internetowy, który przechowuje repozytoria Gita i dodaje narzędzia do w
 - **Analogia z designu:** Jeśli Git to historia wersji, to GitHub jest chmurą Figmy z udostępnianiem i komentarzami.
 - **Przykład:** https://github.com/Megi1982/nauka-ai
 
+### GitHub Actions
+Wbudowana w GitHuba usługa do automatyzacji, np. CI. W pliku workflow opisujesz, co ma się dziać i kiedy. GitHub uruchamia wtedy tymczasowy komputer (**runner**), wykonuje kroki i pokazuje wynik przy commicie albo pull requeście. Dla publicznych repozytoriów jest darmowa.
+- **Analogia z designu:** Jak plugin w Figmie, który uruchamia się sam przy każdej publikacji pliku, zamiast żeby ktoś klikał go ręcznie.
+- **Przykład:** Zakładka „Actions” na stronie repozytorium na GitHubie
+
 ### Pull request (PR)
 Propozycja na GitHubie, żeby połączyć zmiany z Twojej gałęzi z inną (zwykle z `main`). To miejsce na dyskusję i code review.
 - **Analogia z designu:** Pokazanie brancha do review, zanim scalisz go z głównym plikiem.
@@ -214,6 +229,11 @@ Propozycja na GitHubie, żeby połączyć zmiany z Twojej gałęzi z inną (zwyk
 Para plików do bezpiecznego logowania bez hasła. **Klucz publiczny** przekazujesz GitHubowi, a **klucz prywatny** zostaje na Twoim komputerze i nigdy nie wolno go nikomu udostępniać.
 - **Analogia z designu:** Karta dostępu do biura: czytnik (GitHub) zna Twoją kartę, a sama karta (klucz prywatny) zostaje u Ciebie.
 - **Przykład:** `ssh -T git@github.com` (sprawdź, czy GitHub rozpoznaje Twój klucz)
+
+### Workflow (YAML)
+Przepis dla GitHub Actions zapisany jako plik w `.github/workflows/`. Mówi, **kiedy** ma się uruchomić (`on:`, np. przy każdym pull requeście) i **co** zrobić (`jobs:` złożone ze `steps:`). Jest pisany w **YAML**, prostym formacie tekstowym, w którym wcięcia (spacje) pokazują, co do czego należy.
+- **Analogia z designu:** Jak spisana checklista handoffu: wyzwalacz („gdy projekt jest gotowy dla developerów”) i kroki po kolei.
+- **Przykład:** `.github/workflows/test.yml` (pobierz kod → zainstaluj Node → `npm ci` → `npm test`)
 
 ---
 
@@ -320,6 +340,16 @@ Uzgodniony zestaw „okienek”, przez które frontend może o coś poprosić ba
 - **Analogia z designu:** Menu w restauracji: mówi, co możesz zamówić, ale nie pokazuje, jak kuchnia to przygotowuje.
 - **Przykład:** `GET /api/trade-default/EURUSD` w demo deal ticket
 
+### Assertion
+Asercja, czyli jedno sprawdzenie w teście: „oczekuję, że ta wartość będzie dokładnie taka”. Jeśli nie jest, test nie przechodzi i pokazuje obie wartości obok siebie. `equal` porównuje proste wartości, a `deepEqual` całe obiekty, pole po polu.
+- **Analogia z designu:** Jedna linijka checklisty QA: „przycisk ma 48 px wysokości”. Albo prawda, albo nie.
+- **Przykład:** `assert.equal(median([0.5, 0.8, 0.5, 0.5, 3.0]), 0.5)`
+
+### Automated test
+Test automatyczny, czyli mały program, który sprawdza inny program: dla danych wejściowych oczekuje konkretnego wyniku. Komputer uruchamia go w kilka sekund, za każdym razem tak samo, więc po każdej zmianie można puścić wszystkie testy i od razu wyłapać regresję.
+- **Analogia z designu:** Jak visual regression testing komponentów albo checklista QA, która odhacza się sama.
+- **Przykład:** `projects/deal-ticket/test/tradeDefault.test.js`
+
 ### Backend
 Część aplikacji działająca na serwerze: logika biznesowa, obliczenia, walidacja i dostęp do danych. Użytkownik nigdy nie widzi jej bezpośrednio.
 - **Analogia z designu:** Kuchnia w restauracji: goście widzą tylko danie.
@@ -415,6 +445,11 @@ Tekstowy format zapisywania i przesyłania danych jako par „klucz: wartość�
 - **Analogia z designu:** Adres budynku (localhost) i numer biura w środku (port).
 - **Przykład:** http://localhost:3000
 
+### LTS (Long-Term Support)
+Wersja programu (np. Node.js) z długim wsparciem, czyli gwarancją poprawek przez dłuższy czas, zwykle kilka lat. To bezpieczny wybór dla serwerów i CI. Wersje pośrednie dostają nowości szybciej, ale są wspierane krótko.
+- **Analogia z designu:** Jak stabilne wydanie design systemu w odróżnieniu od gałęzi beta z najnowszymi komponentami.
+- **Przykład:** `node-version: 24` w `.github/workflows/test.yml`
+
 ### Median and mode
 Mediana i dominanta, czyli proste statystyki użyte w demo jako heurystyka (reguła kciuka). **Dominanta** to najczęstsza wartość. **Mediana** to wartość środkowa po posortowaniu; w odróżnieniu od średniej jedna nietypowa wartość jej nie zawyża.
 - **Analogia z designu:** W badaniach z użytkownikami dominanta to odpowiedź, którą dało najwięcej osób, a mediana mówi, co robi typowy użytkownik, nawet jeśli jedna osoba jest skrajna.
@@ -440,10 +475,25 @@ Menedżer pakietów dla Node.js: pobiera biblioteki z publicznego rejestru npm i
 - **Analogia z designu:** Jak biblioteka pluginów w Figma Community, z menedżerem, który instaluje dokładnie te wersje, których potrzebujesz.
 - **Przykład:** `npm install` / `npm start`
 
+### npm ci
+Instaluje zależności dokładnie w wersjach zapisanych w `package-lock.json`, zaczynając od pustego `node_modules`. W odróżnieniu od `npm install` nigdy nie zmienia pliku lock, więc CI używa dokładnie tych samych wersji co Twój komputer.
+- **Analogia z designu:** Jak otwarcie pliku z przypiętymi wersjami bibliotek zamiast akceptowania aktualizacji, które akurat są dostępne.
+- **Przykład:** Krok „Install dependencies” w `.github/workflows/test.yml`
+
+### npm scripts (npm test)
+Skrypty npm, czyli nazwane skróty do poleceń zapisane w sekcji `scripts` w `package.json`. `npm start` i `npm test` to standardowe nazwy, więc każdy (także CI) wie, jak uruchomić albo przetestować projekt, bez czytania dokumentacji.
+- **Analogia z designu:** Jak zapisany preset eksportu: jedna nazwa, zawsze te same ustawienia.
+- **Przykład:** `"test": "node --test"` w `package.json`
+
 ### null
 Specjalna wartość oznaczająca „celowo pusto, nic nie wybrano”. To coś innego niż wartość domyślna: `null` mówi otwarcie, że decyzja jeszcze nie zapadła, zamiast podejmować ją za użytkownika.
 - **Analogia z designu:** Radio group bez domyślnie zaznaczonej opcji, żeby użytkownik wybrał świadomie.
 - **Przykład:** `side: null` w `state` w `frontend/app.js` (brak kierunku, dopóki użytkownik nie wybierze Buy albo Sell)
+
+### Outlier
+Wartość odstająca, czyli taka, która bardzo różni się od pozostałych, np. jedna nietypowo duża transakcja. Potrafi zawyżyć średnią, dlatego Trade default korzysta z mediany.
+- **Analogia z designu:** Jeden uczestnik badania użyteczności, który zachowuje się zupełnie inaczej niż wszyscy pozostali.
+- **Przykład:** Transakcja T-016: GBP/USD 3.0 lota, podczas gdy pozostałe mają od 0.5 do 0.8
 
 ### package.json and package-lock.json
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
@@ -474,6 +524,11 @@ Serwer, czyli program, który czeka na zapytania i na nie odpowiada. Podczas pra
 Stan, czyli to, co aplikacja „pamięta” w danej chwili: co jest wybrane, co zostało pobrane, co jest pokazane. Ekran rysuje się na podstawie stanu. Częsty błąd to stan, którego nie wyczyszczono po zmianie kontekstu, np. stare wartości w formularzu po przełączeniu instrumentu.
 - **Analogia z designu:** Aktualny wariant i właściwości komponentu: zmieniasz je i komponent wygląda inaczej.
 - **Przykład:** `const state = { instruments: [], side: 'buy', suggestion: null };` w `frontend/app.js`
+
+### Test runner (node:test)
+Program, który znajduje pliki z testami, uruchamia je i raportuje, co przeszło, a co nie. Node.js ma taki wbudowany (`node:test`), więc nie trzeba dodawać żadnej zależności. `node --test` sam szuka plików typu `*.test.js` albo wszystkiego w folderze `test/`.
+- **Analogia z designu:** Jak osoba prowadząca sesję badania użyteczności: trzyma się scenariusza, notuje każdy wynik i pisze podsumowanie.
+- **Przykład:** `npm test` → `ℹ pass 9` / `ℹ fail 0`
 
 ### Validation (client and server)
 Walidacja, czyli sprawdzanie, czy dane mają sens, np. czy stop loss jest poniżej ceny przy zleceniu Buy. We **frontendzie** daje użytkownikowi szybki feedback, a w **backendzie** chroni dane, bo każdy może ominąć przeglądarkę i wysłać zapytanie bezpośrednio.
