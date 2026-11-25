@@ -190,6 +190,11 @@ A description of an error that lets someone else reproduce and fix it. Format: *
 - **Design analogy:** Like a good usability-test note: what the user did, what happened, what should have happened and why it matters.
 - **Example:** "After switching the instrument, the old stop loss and take profit stay in the form" in the deal ticket demo.
 
+### CI (Continuous Integration)
+The practice of checking every change automatically before it reaches the main version: a computer runs the tests on each push and pull request. The PR gets a green check or a red cross, so problems are caught before merging, not after.
+- **Design analogy:** Like an automatic design review that runs on every change to the design system, before it's published to the library.
+- **Example:** The "Tests" check on a pull request in this repository
+
 ### Code review
 Another person reads your changes before they're merged, leaves comments and suggests improvements.
 - **Design analogy:** A design critique or design review.
@@ -205,6 +210,11 @@ An online service that hosts Git repositories and adds collaboration tools: pull
 - **Design analogy:** If Git is version history, GitHub is the Figma cloud with sharing and comments.
 - **Example:** https://github.com/Megi1982/nauka-ai
 
+### GitHub Actions
+GitHub's built-in service for automation, such as CI. You describe in a workflow file what should happen and when; GitHub then starts a temporary computer (a **runner**), does the steps and shows the result next to the commit or pull request. Free for public repositories.
+- **Design analogy:** Like a Figma plugin that runs on its own every time a file is published, instead of someone clicking it by hand.
+- **Example:** The "Actions" tab on the repository page on GitHub
+
 ### Pull request (PR)
 A proposal on GitHub to merge changes from your branch into another one (usually `main`). It's the place for discussion and code review.
 - **Design analogy:** Presenting a design branch for review before merging it into the main file.
@@ -214,6 +224,11 @@ A proposal on GitHub to merge changes from your branch into another one (usually
 A pair of files used to log in securely without a password. The **public key** is shared with GitHub; the **private key** stays on your computer and must never be shared.
 - **Design analogy:** An office access card: the reader (GitHub) knows your card, and the card itself (private key) stays with you.
 - **Example:** `ssh -T git@github.com` (check that GitHub recognizes your key)
+
+### Workflow (YAML)
+A GitHub Actions recipe saved as a file in `.github/workflows/`. It says **when** to run (`on:`, e.g. on every pull request) and **what** to do (`jobs:` made of `steps:`). It's written in **YAML**, a simple text format where indentation (spaces) shows what belongs to what.
+- **Design analogy:** Like a written handoff checklist: the trigger ("when a design is ready for dev") and the steps, in order.
+- **Example:** `.github/workflows/test.yml` (check out code → set up Node → `npm ci` → `npm test`)
 
 ---
 
@@ -320,6 +335,16 @@ The agreed set of "windows" through which the frontend can ask the backend for s
 - **Design analogy:** A restaurant menu: it lists what you can order, without showing how the kitchen makes it.
 - **Example:** `GET /api/trade-default/EURUSD` in the deal ticket demo
 
+### Assertion
+One check inside a test: "I expect this value to be exactly that one". If it isn't, the test fails and shows both values side by side. `equal` compares simple values; `deepEqual` compares whole objects field by field.
+- **Design analogy:** One line of a QA checklist: "the button is 48 px high", either true or false.
+- **Example:** `assert.equal(median([0.5, 0.8, 0.5, 0.5, 3.0]), 0.5)`
+
+### Automated test
+A small program that checks another program: for given input it expects a specific result. A computer runs it in seconds, the same way every time, so you can rerun all tests after every change and catch a regression straight away.
+- **Design analogy:** Like visual regression testing for components, or a QA checklist that ticks itself off.
+- **Example:** `projects/deal-ticket/test/tradeDefault.test.js`
+
 ### Backend
 The part of the application that runs on the server: business logic, calculations, validation and access to data. The user never sees it directly.
 - **Design analogy:** The kitchen in a restaurant: guests only see the dish.
@@ -415,6 +440,11 @@ A text format for storing and sending data as "key: value" pairs and lists. Read
 - **Design analogy:** The building address (localhost) and the office number inside it (port).
 - **Example:** http://localhost:3000
 
+### LTS (Long-Term Support)
+A version of a program (e.g. Node.js) that is guaranteed to receive fixes for a long time, usually a few years. It's the safe choice for servers and CI. Versions in between get new features first, but are supported only briefly.
+- **Design analogy:** Like the stable release of a design system, as opposed to the beta branch with the newest components.
+- **Example:** `node-version: 24` in `.github/workflows/test.yml`
+
 ### Median and mode
 Simple statistics used in the demo as a heuristic (a rule of thumb). **Mode** is the most frequent value. **Median** is the middle value after sorting; unlike an average, a single unusual value doesn't skew it.
 - **Design analogy:** In user research, the mode is the answer most people gave, and the median tells you what a typical user does, even if one person is extreme.
@@ -440,10 +470,25 @@ The package manager for Node.js: it downloads libraries from the public npm regi
 - **Design analogy:** Like the Figma Community plugin library, with a manager that installs exactly the versions you need.
 - **Example:** `npm install` / `npm start`
 
+### npm ci
+Installs dependencies exactly as recorded in `package-lock.json`, starting from an empty `node_modules`. Unlike `npm install`, it never changes the lock file, so CI uses exactly the same versions as your computer.
+- **Design analogy:** Like opening a file with library versions pinned, instead of accepting whatever updates are available today.
+- **Example:** The "Install dependencies" step in `.github/workflows/test.yml`
+
+### npm scripts (npm test)
+Named shortcuts for commands, written in the `scripts` section of `package.json`. `npm start` and `npm test` are standard names, so anyone (or CI) knows how to start or test a project without reading its documentation.
+- **Design analogy:** Like a saved export preset: one name, always the same settings.
+- **Example:** `"test": "node --test"` in `package.json`
+
 ### null
 A special value meaning "deliberately empty, nothing chosen". It's different from a default value: `null` says openly that no decision has been made yet, instead of making one on the user's behalf.
 - **Design analogy:** A radio group with no option preselected, so the user has to choose consciously.
 - **Example:** `side: null` in `state` in `frontend/app.js` (no direction until the user picks Buy or Sell)
+
+### Outlier
+A value that is very different from the rest, e.g. a single unusually large trade. It can skew an average, which is why the Trade default uses the median.
+- **Design analogy:** One participant in a usability study who behaves completely differently from everyone else.
+- **Example:** Trade T-016: GBP/USD 3.0 lots, when the others are 0.5 to 0.8
 
 ### package.json and package-lock.json
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
@@ -474,6 +519,11 @@ A program that waits for requests and answers them. During development it runs o
 What the application "remembers" right now: what's selected, what was fetched, what's shown. The screen is drawn from the state. A common bug is state that isn't reset when the context changes, such as old form values after switching the instrument.
 - **Design analogy:** The current variant and properties of a component: change them and the component looks different.
 - **Example:** `const state = { instruments: [], side: 'buy', suggestion: null };` in `frontend/app.js`
+
+### Test runner (node:test)
+A program that finds test files, runs them and reports what passed and what failed. Node.js has one built in (`node:test`), so no extra dependency is needed. `node --test` automatically looks for files such as `*.test.js` or anything in a `test/` folder.
+- **Design analogy:** Like the person running a usability session: they follow the script, note each result and write the summary.
+- **Example:** `npm test` → `ℹ pass 9` / `ℹ fail 0`
 
 ### Validation (client and server)
 Checking that data makes sense, e.g. a stop loss below the price for a Buy order. In the **frontend** it gives quick feedback to the user; in the **backend** it protects the data, because anyone can bypass the browser and send a request directly.
