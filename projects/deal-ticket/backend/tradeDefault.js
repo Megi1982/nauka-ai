@@ -11,9 +11,8 @@ function mode(values) {
 
 // Middle value after sorting. Ignores one-off outliers better than an average.
 function median(values) {
-  const sorted = [...values].sort((a, b) => a - b);
-  const mid = Math.floor(sorted.length / 2);
-  return sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2;
+  // EXPERIMENT: deliberate bug, average instead of median
+  return values.reduce((sum, v) => sum + v, 0) / values.length;
 }
 
 function round(value, decimals) {
