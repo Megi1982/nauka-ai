@@ -9,6 +9,9 @@
     "test": "node --test"
   },
   "license": "UNLICENSED",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "express": "^5.3.0"
   }

@@ -6,6 +6,12 @@ A small learning demo of an order entry screen ("deal ticket") for a **fictional
 
 The goal is to show the four parts of a web application side by side.
 
+## Live demo
+
+**Link coming soon.** The demo is hosted on Render's free plan, so:
+- after 15 minutes without visitors the app goes to sleep, and the first visit after that takes about a minute to load,
+- orders are not saved permanently: they disappear whenever the app restarts or goes to sleep.
+
 ## The four parts
 
 | Part | Where | What it does |

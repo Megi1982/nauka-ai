@@ -195,6 +195,11 @@ A description of an error that lets someone else reproduce and fix it. Format: *
 - **Design analogy:** Like a good usability-test note: what the user did, what happened, what should have happened and why it matters.
 - **Example:** "After switching the instrument, the old stop loss and take profit stay in the form" in the deal ticket demo.
 
+### CD (Continuous Deployment)
+The next step after CI: once a change lands on the main branch, it's published to the live app automatically, with no manual upload. CI checks the change, CD ships it.
+- **Design analogy:** Like a design system library that republishes itself every time an approved change is merged, so every file gets the update without anyone clicking "Publish".
+- **Example:** Render's Auto-Deploy: every push to `main` rebuilds and restarts the deal ticket demo.
+
 ### CI (Continuous Integration)
 The practice of checking every change automatically before it reaches the main version: a computer runs the tests on each push and pull request. The PR gets a green check or a red cross, so problems are caught before merging, not after.
 - **Design analogy:** Like an automatic design review that runs on every change to the design system, before it's published to the library.
@@ -385,6 +390,11 @@ Someone else's ready-made code that your project uses, e.g. a library. Listed in
 - **Design analogy:** A component library you link to your file instead of drawing every button yourself.
 - **Example:** `express` in the deal ticket demo (its only dependency)
 
+### Deploy
+Publishing an application so it runs on a server on the internet, not just on your own computer. A deploy usually means: download the code, install dependencies (build) and start the server.
+- **Design analogy:** Like going from a prototype you click through locally to a live product that anyone with the link can open.
+- **Example:** Publishing the deal ticket demo on Render
+
 ### Disabled state
 A state of a button or field in which it can't be used: it doesn't react to clicks and looks muted. In HTML it's the `disabled` attribute. It's used when an action doesn't make sense yet, and the label should say what to do to unlock it.
 - **Design analogy:** The disabled variant of a button component in a design system.
@@ -394,6 +404,11 @@ A state of a button or field in which it can't be used: it doesn't react to clic
 One specific address in an API, together with its HTTP method, e.g. `GET /api/instruments`. Each endpoint does one job.
 - **Design analogy:** One item on the menu.
 - **Example:** `app.get('/api/instruments', ...)` in `server.js`
+
+### Environment variable
+A named setting that the operating system or hosting service passes to a program from the outside, instead of it being written into the code. In Node.js you read it with `process.env.NAME`. Useful for things that differ between your laptop and the server, such as the port or passwords.
+- **Design analogy:** Like a design token whose value depends on the theme: the component refers to `color.background`, and light or dark mode decides the actual color.
+- **Example:** `const PORT = process.env.PORT || 3000;` in `backend/server.js` (Render sets `PORT`, on your laptop it falls back to 3000)
 
 ### Event listener
 A function "attached" to an event, such as a click, a dropdown change or a form submit. The function doesn't run on its own: the browser calls it when that event happens.
@@ -424,6 +439,11 @@ A named, reusable piece of code that does one job. It can take inputs (parameter
 Running a function by writing its name with brackets, e.g. `renderPrices()`. A function can call other functions, so one call can start a whole chain in a set order. To follow the logic, start from the entry point and read which function calls which.
 - **Design analogy:** Like a user flow: one screen leads to the next in a defined order, and you read it from the starting screen.
 - **Example:** `init()` → `onInstrumentChange()` → `renderPrices()`, `fetchTradeDefault()`, `renderSuggestion()`, `setDrawer(true)` in `frontend/app.js`
+
+### Hosting
+A service that rents you a computer (server) on the internet that runs your application around the clock. Free plans usually have limits, e.g. the app goes to sleep when nobody uses it and files written by it aren't kept.
+- **Design analogy:** Like renting a gallery space to show your work: you bring the exhibits, the gallery provides the walls, light and opening hours.
+- **Example:** Render (free Web Service plan) for the deal ticket demo
 
 ### HTTP method (GET, POST)
 The type of request sent to the server. **GET** means "give me data" and changes nothing; **POST** means "here is new data, save it".
