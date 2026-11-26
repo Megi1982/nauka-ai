@@ -8,7 +8,9 @@ Celem jest pokazanie obok siebie czterech części aplikacji webowej.
 
 ## Demo online
 
-**Link wkrótce.** Demo działa na darmowym planie Render, dlatego:
+**Wypróbuj: https://deal-ticket.onrender.com**
+
+Demo działa na darmowym planie Render, dlatego:
 - po 15 minutach bez odwiedzin aplikacja zasypia, a pierwsze wejście po przerwie trwa około minuty,
 - zlecenia nie są zapisywane trwale: znikają przy każdym restarcie albo uśpieniu aplikacji.
 

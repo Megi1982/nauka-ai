@@ -25,6 +25,12 @@ współpracować z zespołami produktowymi i technicznymi.
 Każdy krok nauki zapisuję jako commit, więc historia zmian
 jest jednocześnie zapisem mojej drogi.
 
+## Projekty
+
+- **Demo Deal Ticket**: ekran składania zleceń dla fikcyjnej platformy tradingowej (frontend, API, backend i baza danych w JSON).
+  - [Demo online](https://deal-ticket.onrender.com) (pierwsze wejście po przerwie może potrwać około minuty, bo darmowy serwer się wybudza)
+  - [Opis](projects/deal-ticket/README.pl.md)
+
 ## Dziennik nauki
 
 Krótka, codzienna refleksja: czego się nauczyłam, co było trudne i moje pytanie na jutro.

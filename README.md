@@ -25,6 +25,12 @@ collaborate better with product and engineering teams.
 I record every learning step as a commit, so the change history
 is also a record of my journey.
 
+## Projects
+
+- **Deal Ticket demo**: an order entry screen for a fictional trading platform (frontend, API, backend and a JSON database).
+  - [Live demo](https://deal-ticket.onrender.com) (the first visit after a break may take about a minute while the free server wakes up)
+  - [Description](projects/deal-ticket/README.md)
+
 ## Learning journal
 
 A short daily reflection: what I learned, what was difficult, and my question for tomorrow.
