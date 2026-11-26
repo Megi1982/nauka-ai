@@ -195,6 +195,11 @@ Zgłoszenie błędu, czyli opis, który pozwala komuś innemu błąd odtworzyć 
 - **Analogia z designu:** Jak dobra notatka z testu użyteczności: co zrobił użytkownik, co się stało, co powinno się stać i dlaczego to ważne.
 - **Przykład:** „Po zmianie instrumentu w formularzu zostają stare wartości stop loss i take profit” w demo deal ticket.
 
+### CD (Continuous Deployment)
+Ciągłe wdrażanie, czyli krok po CI: gdy zmiana trafi do gałęzi głównej, automatycznie publikuje się w działającej aplikacji, bez ręcznego wgrywania. CI sprawdza zmianę, CD ją wypuszcza.
+- **Analogia z designu:** Jak biblioteka design systemu, która sama publikuje się ponownie po każdej zaakceptowanej zmianie, więc wszystkie pliki dostają aktualizację bez klikania „Publish”.
+- **Przykład:** Auto-Deploy w Render: każdy push do `main` buduje i restartuje demo deal ticket.
+
 ### CI (Continuous Integration)
 Ciągła integracja, czyli zasada, że każda zmiana jest automatycznie sprawdzana, zanim trafi do głównej wersji: przy każdym pushu i pull requeście komputer uruchamia testy. PR dostaje zielony znaczek albo czerwony krzyżyk, więc problemy wychodzą przed połączeniem zmian, a nie po.
 - **Analogia z designu:** Jak automatyczne design review, które odbywa się przy każdej zmianie w design systemie, zanim zostanie opublikowana w bibliotece.
@@ -385,6 +390,11 @@ Zależność, czyli cudzy, gotowy kod, z którego korzysta Twój projekt, np. bi
 - **Analogia z designu:** Biblioteka komponentów podpięta do pliku, zamiast rysowania każdego przycisku samodzielnie.
 - **Przykład:** `express` w demo deal ticket (jedyna zależność)
 
+### Deploy
+Wdrożenie, czyli opublikowanie aplikacji tak, żeby działała na serwerze w internecie, a nie tylko na Twoim komputerze. Zwykle oznacza: pobranie kodu, instalację zależności (build) i uruchomienie serwera.
+- **Analogia z designu:** Jak przejście od prototypu, który klikasz u siebie, do działającego produktu, który otworzy każdy, kto ma link.
+- **Przykład:** Publikacja demo deal ticket na Render
+
 ### Disabled state
 Stan nieaktywny przycisku lub pola: nie reaguje na kliknięcia i jest wyszarzony. W HTML to atrybut `disabled`. Używa się go, gdy akcja jeszcze nie ma sensu, a etykieta powinna mówić, co zrobić, żeby ją odblokować.
 - **Analogia z designu:** Wariant disabled komponentu przycisku w design systemie.
@@ -394,6 +404,11 @@ Stan nieaktywny przycisku lub pola: nie reaguje na kliknięcia i jest wyszarzony
 Jeden konkretny adres w API razem z metodą HTTP, np. `GET /api/instruments`. Każdy endpoint robi jedną rzecz.
 - **Analogia z designu:** Jedna pozycja w menu.
 - **Przykład:** `app.get('/api/instruments', ...)` w `server.js`
+
+### Environment variable
+Zmienna środowiskowa, czyli nazwane ustawienie, które system albo hosting przekazuje programowi z zewnątrz, zamiast wpisywać je do kodu. W Node.js odczytuje się ją przez `process.env.NAZWA`. Przydaje się do rzeczy, które różnią się między laptopem a serwerem, np. portu albo haseł.
+- **Analogia z designu:** Jak design token, którego wartość zależy od motywu: komponent odwołuje się do `color.background`, a tryb jasny albo ciemny decyduje o konkretnym kolorze.
+- **Przykład:** `const PORT = process.env.PORT || 3000;` w `backend/server.js` (Render ustawia `PORT`, a na laptopie zostaje 3000)
 
 ### Event listener
 Nasłuchiwacz zdarzeń, czyli funkcja „podpięta” pod zdarzenie, np. kliknięcie, zmianę wartości w dropdownie albo wysłanie formularza. Funkcja nie uruchamia się sama: przeglądarka wywołuje ją, gdy to zdarzenie nastąpi.
@@ -424,6 +439,11 @@ Funkcja, czyli nazwany fragment kodu wielokrotnego użytku, który robi jedną r
 Wywołanie funkcji, czyli uruchomienie jej przez wpisanie nazwy z nawiasami, np. `renderPrices()`. Funkcja może wywoływać inne funkcje, więc jedno wywołanie potrafi uruchomić cały łańcuch w ustalonej kolejności. Żeby zrozumieć logikę, zacznij od punktu startowego i czytaj, która funkcja wywołuje którą.
 - **Analogia z designu:** Jak user flow: jeden ekran prowadzi do następnego w określonej kolejności, a czytasz go od ekranu startowego.
 - **Przykład:** `init()` → `onInstrumentChange()` → `renderPrices()`, `fetchTradeDefault()`, `renderSuggestion()`, `setDrawer(true)` w `frontend/app.js`
+
+### Hosting
+Usługa, która wynajmuje Ci komputer (serwer) w internecie, gdzie Twoja aplikacja działa przez całą dobę. Darmowe plany mają zwykle ograniczenia, np. aplikacja zasypia, gdy nikt z niej nie korzysta, a zapisane przez nią pliki nie są trwałe.
+- **Analogia z designu:** Jak wynajęcie przestrzeni w galerii na wystawę: Ty przynosisz prace, galeria daje ściany, światło i godziny otwarcia.
+- **Przykład:** Render (darmowy plan Web Service) dla demo deal ticket
 
 ### HTTP method (GET, POST)
 Metoda HTTP, czyli rodzaj zapytania wysyłanego do serwera. **GET** znaczy „daj mi dane” i niczego nie zmienia, a **POST** znaczy „oto nowe dane, zapisz je”.
