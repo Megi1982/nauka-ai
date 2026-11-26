@@ -121,6 +121,11 @@ Usuwa lokalną gałąź, gdy jej praca jest już zmergowana. Małe `-d` to wersj
 - **Analogia z designu:** Usunięcie strony w Figmie dopiero po sprawdzeniu, że wszystkie jej ramki są przeniesione na główną stronę.
 - **Przykład:** `git branch -d fix/direction-after-instrument-change` → „Deleted branch … (was 3501582)”
 
+### git fetch --prune
+`git fetch` pobiera z GitHuba najnowsze informacje (nowe commity i gałęzie), nie zmieniając Twoich plików. Opcja `--prune` dodatkowo usuwa lokalne zakładki do gałęzi (remote-tracking branches), których nie ma już na GitHubie. Porządkuje tylko Twoją kopię i nigdy niczego nie usuwa na serwerze.
+- **Analogia z designu:** Odświeżenie listy udostępnionych plików i usunięcie skrótów do plików, które ktoś już skasował z chmury.
+- **Przykład:** `git fetch --prune` → „[deleted] (none) -> origin/feature/deploy-render” po tym, jak gałąź została usunięta na GitHubie przy merge'u PR
+
 ### git log
 Pokazuje historię commitów: kto, kiedy, co i dlaczego zmienił.
 - **Analogia z designu:** Panel historii wersji w Figmie.
@@ -175,6 +180,11 @@ Wysyła Twoje lokalne commity na remote (np. na GitHuba).
 Kopia repozytorium na serwerze (np. na GitHubie), zapisana w Twoim repozytorium jako adres.
 - **Analogia z designu:** Wspólny plik w chmurze, w odróżnieniu od pliku, który jest tylko na Twoim dysku.
 - **Przykład:** `git remote add origin git@github.com:Megi1982/nauka-ai.git`
+
+### Remote-tracking branch
+Gałąź śledząca, czyli lokalna notatka Twojego repozytorium o tym, gdzie była gałąź na serwerze przy ostatnim kontakcie z nim, np. `origin/main`. Nie aktualizuje się sama, więc może wskazywać gałąź, którą już usunięto na GitHubie. `git branch -r` pokazuje te notatki, a `git ls-remote` pyta GitHuba o stan na teraz.
+- **Analogia z designu:** Zakładka do udostępnionego pliku w Figmie: zostaje na liście nawet po usunięciu pliku, dopóki nie odświeżysz.
+- **Przykład:** `origin/docs/live-demo-link` był jeszcze widoczny lokalnie, choć gałąź została już usunięta na GitHubie
 
 ### Repository
 Repozytorium, czyli folder projektu śledzony przez Gita, razem z pełną historią zmian (zapisaną w ukrytym folderze `.git`).

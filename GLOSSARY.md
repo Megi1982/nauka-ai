@@ -121,6 +121,11 @@ Deletes a local branch once its work is merged. Small `-d` is the safe version: 
 - **Design analogy:** Deleting a Figma page only after checking that all its frames have been moved to the main page.
 - **Example:** `git branch -d fix/direction-after-instrument-change` → "Deleted branch … (was 3501582)"
 
+### git fetch --prune
+`git fetch` downloads the latest information from GitHub (new commits and branches) without changing your files. The `--prune` option also removes remote-tracking branches that no longer exist on GitHub. It only tidies your local copy and never deletes anything on the server.
+- **Design analogy:** Refreshing the list of shared files and removing shortcuts to files someone has already deleted from the cloud.
+- **Example:** `git fetch --prune` → "[deleted] (none) -> origin/feature/deploy-render" after the branch was deleted on GitHub when its PR was merged
+
 ### git log
 Shows the commit history: who changed what, when, and why.
 - **Design analogy:** The version history panel in Figma.
@@ -175,6 +180,11 @@ Sends your local commits to the remote (e.g. to GitHub).
 A copy of the repository on a server (e.g. on GitHub), saved in your repository as an address.
 - **Design analogy:** A shared file in the cloud, as opposed to a file that lives only on your drive.
 - **Example:** `git remote add origin git@github.com:Megi1982/nauka-ai.git`
+
+### Remote-tracking branch
+Your repository's local note of where a branch on the remote was the last time you talked to it, e.g. `origin/main`. It doesn't update by itself, so it can point to a branch that has since been deleted on GitHub. `git branch -r` lists these notes, while `git ls-remote` asks GitHub about its current state.
+- **Design analogy:** A bookmark to a shared Figma file: it stays in your list even after someone deletes the file, until you refresh.
+- **Example:** `origin/docs/live-demo-link` was still visible locally after the branch had been deleted on GitHub
 
 ### Repository
 A project folder tracked by Git, together with its full change history (stored in a hidden `.git` folder).
