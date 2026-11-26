@@ -380,6 +380,11 @@ The **browser cache** is the browser's local store of downloaded files (e.g. Jav
 - **Design analogy:** Like a stale thumbnail of a Figma file: the file has changed, but the preview still shows the old version until it's regenerated.
 - **Example:** Cmd + Shift + R in Chrome on a Mac
 
+### Build
+The preparation step before an app can start on a server: downloading dependencies and, in bigger projects, bundling or compiling the code. On a hosting service it's set as the Build Command and runs on every deploy.
+- **Design analogy:** Like exporting assets and packaging the handoff before developers can use the design.
+- **Example:** Build Command `npm ci` for the deal ticket on Render
+
 ### Business logic
 The rules and calculations that make the application do its actual job, as opposed to receiving requests or storing data. It's worth keeping it in a separate file, so it can be changed and tested without touching the rest.
 - **Design analogy:** Like the design principles behind a product: they decide what happens, whatever tool or screen you apply them in.
@@ -534,6 +539,11 @@ A value that is very different from the rest, e.g. a single unusually large trad
 **package.json** is the project's "ID card": its name, start command and list of dependencies. **package-lock.json** records the exact versions that were installed, so everyone gets the same ones. Both are committed.
 - **Design analogy:** package.json is the list of libraries a file uses; package-lock.json pins their exact versions.
 - **Example:** `"start": "node backend/server.js"` in `package.json`
+
+### Production
+The live version of an app that real users open, as opposed to the version on your own computer (local) used for development and testing. Changes reach production only after they've been checked.
+- **Design analogy:** The published product, as opposed to work-in-progress files in your drafts.
+- **Example:** https://deal-ticket.onrender.com (production) vs http://localhost:3000 (local)
 
 ### Pure function
 A function that only takes data in and gives a result back. It doesn't read files, doesn't know about HTTP and changes nothing outside itself, so the same inputs always give the same result. That makes it easy to test and to reuse.

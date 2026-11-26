@@ -8,6 +8,19 @@ The newest entry is at the top. Entries are added with the `/dziennik` command i
 
 ---
 
+## 2026-11-26
+
+### What I learned
+OMG! Today I learned how to deploy to a production server. Continuous Deployment: changes can appear on the server after every merge to main, just like the automated tests run. Render is a separate tool where you deploy the app. And I clicked through the screen I built on my phone.
+
+### What was difficult
+Everything! Both the terms and understanding what is supposed to happen, step by step.
+
+### Question for tomorrow
+Tomorrow we're taking a break for a few days.
+
+---
+
 ## 2026-11-25
 
 ### What I learned

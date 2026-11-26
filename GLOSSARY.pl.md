@@ -380,6 +380,11 @@ Część aplikacji działająca na serwerze: logika biznesowa, obliczenia, walid
 - **Analogia z designu:** Jak nieaktualna miniatura pliku w Figmie: plik się zmienił, ale podgląd pokazuje starą wersję, dopóki się nie odświeży.
 - **Przykład:** Cmd + Shift + R w Chrome na Macu
 
+### Build
+Budowanie, czyli etap przygotowania aplikacji, zanim wystartuje na serwerze: pobranie zależności, a w większych projektach także łączenie albo kompilacja kodu. Na hostingu ustawia się go jako Build Command i uruchamia przy każdym deployu.
+- **Analogia z designu:** Jak eksport assetów i spakowanie handoffu, zanim developerzy mogą skorzystać z projektu.
+- **Przykład:** Build Command `npm ci` dla deal ticketu na Render
+
 ### Business logic
 Logika biznesowa, czyli reguły i obliczenia, dzięki którym aplikacja robi to, do czego naprawdę służy, w odróżnieniu od odbierania zapytań czy przechowywania danych. Warto trzymać ją w osobnym pliku, żeby można ją było zmieniać i testować bez ruszania reszty.
 - **Analogia z designu:** Jak zasady projektowe produktu: decydują, co się dzieje, niezależnie od tego, w jakim narzędziu czy na jakim ekranie je stosujesz.
@@ -534,6 +539,11 @@ Wartość odstająca, czyli taka, która bardzo różni się od pozostałych, np
 **package.json** to „dowód osobisty” projektu: nazwa, komenda startowa i lista zależności. **package-lock.json** zapisuje dokładne zainstalowane wersje, żeby każdy dostał te same. Oba pliki trafiają do commita.
 - **Analogia z designu:** package.json to lista bibliotek, z których korzysta plik, a package-lock.json przypina ich dokładne wersje.
 - **Przykład:** `"start": "node backend/server.js"` w `package.json`
+
+### Production
+Produkcja, czyli działająca wersja aplikacji, którą otwierają prawdziwi użytkownicy, w odróżnieniu od wersji na Twoim komputerze (lokalnej), służącej do pracy i testów. Zmiany trafiają na produkcję dopiero po sprawdzeniu.
+- **Analogia z designu:** Opublikowany produkt w odróżnieniu od plików roboczych w draftach.
+- **Przykład:** https://deal-ticket.onrender.com (produkcja) vs http://localhost:3000 (lokalnie)
 
 ### Pure function
 Czysta funkcja, czyli funkcja, która tylko przyjmuje dane i zwraca wynik. Nie czyta plików, nie wie nic o HTTP i niczego nie zmienia poza sobą, więc te same dane wejściowe zawsze dają ten sam wynik. Dzięki temu łatwo ją testować i używać ponownie.

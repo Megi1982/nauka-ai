@@ -8,6 +8,19 @@ Najnowszy wpis jest na górze. Wpisy dodaję komendą `/dziennik` w Claude Code.
 
 ---
 
+## 2026-11-26
+
+### Czego się nauczyłam
+OMG! Dziś nauczyłam się, jak robić deploy na produkcyjnym serwerze. Continuous Deployment: że zmiany na serwerze mogą pojawiać się po każdym merge'u do main, tak jak i testy automatyczne. Render to osobne narzędzie, gdzie deployuje się appkę. No i klikałam po swoim zbudowanym ekranie na mojej mobilce.
+
+### Co było trudne
+Wszystko! I te pojęcia, i zrozumienie, co się ma wydarzyć po kolei.
+
+### Pytanie na jutro
+Jutro robimy przerwę na kilka dni.
+
+---
+
 ## 2026-11-25
 
 ### Czego się nauczyłam
